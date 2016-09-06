@@ -51,10 +51,6 @@ public class Signal implements Comparable<Signal>{
 	}
 	
 	public int compareTo(Signal arg0) {
-		return String.compare(enrichment.getName(),arg0.getEnrichment().getName());
+		return enrichment.getName().compareTo(arg0.getEnrichment().getName());
 	}
-	
-	
-	
-
 }
