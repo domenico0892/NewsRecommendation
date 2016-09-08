@@ -1,8 +1,5 @@
 package org.rm3umf.framework.buildmodel;
 
-import java.io.Reader;
-import java.io.StringReader;
-import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
@@ -88,14 +85,14 @@ public class IndexPreparator {
 	private List<News> getPseudoDocumentTraining(User user, List<Period> listaPeriodiTest) throws PersistenceException {
 		List<News> listMessage=AAFacadePersistence.getInstance().newsTrainingRetriveByUser(user.getIduser(), listaPeriodiTest);
 		List<News> listnews = new LinkedList<News>();
-		String pseudoDocument = "";
+		//String pseudoDocument = "";
 		News n;
 		for(News m:listMessage){
 			n = new News();
 			n.setId(m.getId());
-			n.setTitle(UtilText.getInstance().removeStopWord(m.getTitle()));
-			n.setDescription(UtilText.getInstance().removeStopWord(m.getDescription()));
-			n.setNewscontent(UtilText.getInstance().removeStopWord(m.getNewscontent()));
+			n.setTitle(UtilText.removeStopWord(m.getTitle()));
+			n.setDescription(UtilText.removeStopWord(m.getDescription()));
+			n.setNewscontent(UtilText.removeStopWord(m.getNewscontent()));
 			listnews.add(n);
 		}
 		
@@ -105,14 +102,14 @@ public class IndexPreparator {
 	private List<News> getPseudoDocumentNews(User user) throws PersistenceException {
 		List<News> listMessage=AAFacadePersistence.getInstance().newsRetriveByUser(user.getIduser());
 		List<News> listNews = new LinkedList<News>();
-		String pseudoDocument = "";
+		//String pseudoDocument = "";
 		News n = new News();
 		for(News m:listMessage){
 			//pseudoDocument=pseudoDocument+" \n"+m.getText();
 			n.setId(m.getId());
-			n.setTitle(UtilText.getInstance().removeStopWord(m.getTitle()));
-			n.setDescription(UtilText.getInstance().removeStopWord(m.getDescription()));
-			n.setNewscontent(UtilText.getInstance().removeStopWord(m.getNewscontent()));
+			n.setTitle(UtilText.removeStopWord(m.getTitle()));
+			n.setDescription(UtilText.removeStopWord(m.getDescription()));
+			n.setNewscontent(UtilText.removeStopWord(m.getNewscontent()));
 			listNews.add(n);
 		}
 		
@@ -129,7 +126,7 @@ public class IndexPreparator {
 		}
 		
 		System.out.println("---------------\n"+pseudoDocument+"---------------\n");
-		return UtilText.getInstance().removeStopWord(pseudoDocument);
+		return UtilText.removeStopWord(pseudoDocument);
 		
 	}
 	
@@ -137,13 +134,13 @@ public class IndexPreparator {
 		List<News> listMessage=AAFacadePersistence.getInstance().newsCompleteRetriveByUser(user.getIduser(), listaPeriodiTest);
 		List<News> listnews = new LinkedList<News>();
 		News n;
-		String pseudoDocument = "";
+		//String pseudoDocument = "";
 		for(News m:listMessage){
 			n = new News();
 			n.setId(m.getId());
-			n.setTitle(UtilText.getInstance().removeStopWord(m.getTitle()));
-			n.setDescription(UtilText.getInstance().removeStopWord(m.getDescription()));
-			n.setNewscontent(UtilText.getInstance().removeStopWord(m.getNewscontent()));
+			n.setTitle(UtilText.removeStopWord(m.getTitle()));
+			n.setDescription(UtilText.removeStopWord(m.getDescription()));
+			n.setNewscontent(UtilText.removeStopWord(m.getNewscontent()));
 			listnews.add(n);
 		}
 		return listnews;

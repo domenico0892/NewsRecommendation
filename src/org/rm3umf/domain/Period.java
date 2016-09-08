@@ -1,17 +1,10 @@
 package org.rm3umf.domain;
 
-import java.util.LinkedList;
-import java.util.List;
-
-import org.apache.log4j.Logger;
-import org.rm3umf.framework.buildmodel.WeighingScheme;
-import org.rm3umf.framework.buildmodel.extractor.ExtractorException;
-import org.rm3umf.persistenza.AAFacadePersistence;
-import org.rm3umf.persistenza.PersistenceException;
+//import org.apache.log4j.Logger;
 
 public class Period {
 	
-	private static Logger logger = Logger.getLogger(Period.class);
+	//private static Logger logger = Logger.getLogger(Period.class);
 	
 	private int idPeriodo;
 	private String dataInizioPeriodo;

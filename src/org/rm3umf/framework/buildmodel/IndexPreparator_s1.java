@@ -1,8 +1,5 @@
 package org.rm3umf.framework.buildmodel;
 
-import java.io.Reader;
-import java.io.StringReader;
-import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
@@ -11,7 +8,6 @@ import org.rm3umf.domain.Message;
 import org.rm3umf.domain.News;
 import org.rm3umf.domain.User;
 import org.rm3umf.domain.UserModel;
-import org.rm3umf.lucene.FacadeLuceneOld;
 import org.rm3umf.lucene.FacadeLucene_S1;
 import org.rm3umf.persistenza.AAFacadePersistence;
 import org.rm3umf.persistenza.PersistenceException;
@@ -97,7 +93,7 @@ public class IndexPreparator_s1 extends IndexPreparator {
 		return listNews;
 	}
 
-	private String getPseudoDocumentFollowerFollowee(Set<Long> listaFollower, Set<Long> listaFollowed) {
+	public String getPseudoDocumentFollowerFollowee(Set<Long> listaFollower, Set<Long> listaFollowed) {
 		String pseudodocument = "";
 		for(Long follower: listaFollower) {
 			pseudodocument = pseudodocument.concat(""+follower+"\n");
@@ -105,10 +101,10 @@ public class IndexPreparator_s1 extends IndexPreparator {
 		for(Long followed: listaFollowed) {
 			pseudodocument = pseudodocument.concat(""+followed+"\n");
 		}
-		return UtilText.getInstance().removeStopWord(pseudodocument);
+		return UtilText.removeStopWord(pseudodocument);
 	}
 
-	private String getPseudoDocument(User user) throws PersistenceException{
+	public String getPseudoDocument(User user) throws PersistenceException{
 		List<Message> listMessage=AAFacadePersistence.getInstance().messageRetriveByUser(user);
 		String pseudoDocument = "";
 		for(Message m:listMessage){
@@ -116,7 +112,7 @@ public class IndexPreparator_s1 extends IndexPreparator {
 		}
 		
 		System.out.println("---------------\n"+pseudoDocument+"---------------\n");
-		return UtilText.getInstance().removeStopWord(pseudoDocument);
+		return UtilText.removeStopWord(pseudoDocument);
 		
 	}
 

@@ -1,9 +1,6 @@
 package org.rm3umf.domain;
 
 import java.sql.Timestamp;
-import java.util.Date;
-import java.util.LinkedList;
-import java.util.List;
 
 public class NewsEntity extends Enrichment{
 

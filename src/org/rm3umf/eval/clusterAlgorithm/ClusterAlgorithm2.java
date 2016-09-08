@@ -161,7 +161,7 @@ public class ClusterAlgorithm2 {
 	 * @param mediod
 	 * @return
 	 */
-	private double calculateTotalError(List<UserModel> cluster,UserModel mediod){
+	public double calculateTotalError(List<UserModel> cluster,UserModel mediod){
 		double totalError=0.0;
 		
 		//calcolo l'errore totale

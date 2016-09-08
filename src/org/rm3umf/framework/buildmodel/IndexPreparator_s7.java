@@ -1,22 +1,14 @@
 package org.rm3umf.framework.buildmodel;
 
-import java.io.Reader;
-import java.io.StringReader;
-import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
-import org.rm3umf.domain.Message;
 import org.rm3umf.domain.User;
 import org.rm3umf.domain.UserModel;
-import org.rm3umf.lucene.FacadeLuceneOld;
-import org.rm3umf.lucene.FacadeLucene_S1;
 import org.rm3umf.lucene.FacadeLucene_s7;
 import org.rm3umf.persistenza.AAFacadePersistence;
 import org.rm3umf.persistenza.PersistenceException;
-
-import util.UtilText;
 
 public class IndexPreparator_s7 extends IndexPreparator {
 	

@@ -152,7 +152,7 @@ public class ClusterAlgorithm {
 
 
 	
-	private void showCluster(List<List<UserModel>> insiemeCluster,int[] mediods){
+	public void showCluster(List<List<UserModel>> insiemeCluster,int[] mediods){
 		for(int i=0;i<mediods.length;i++){
 			
 			List<UserModel> cluster=insiemeCluster.get(i);

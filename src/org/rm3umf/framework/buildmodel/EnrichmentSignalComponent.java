@@ -2,7 +2,6 @@ package org.rm3umf.framework.buildmodel;
 
 import java.util.List;
 
-import org.rm3umf.domain.News;
 import org.rm3umf.domain.PseudoFragment;
 import org.rm3umf.domain.SignalComponent;
 import org.rm3umf.framework.buildmodel.extractor.ExtractorException;

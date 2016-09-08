@@ -47,7 +47,7 @@ public class Signal implements Comparable<Signal>{
 		return "[SIGNAL:"+user.getIduser()+"-"+enrichment.getName()+"-"+stringSignal+"]";
 	}
 	
-	private String valueSignal(double[] array){
+	public String valueSignal(double[] array){
 		String stringa="";
 		if(array!=null){
 			for(double f:array){

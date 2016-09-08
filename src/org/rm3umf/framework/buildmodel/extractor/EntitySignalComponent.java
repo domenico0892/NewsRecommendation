@@ -4,26 +4,20 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
-import org.apache.log4j.Logger;
+//import org.apache.log4j.Logger;
 import org.rm3umf.domain.Enrichment;
 import org.rm3umf.domain.Message;
-import org.rm3umf.domain.News;
-import org.rm3umf.domain.NewsEntity;
 import org.rm3umf.domain.Period;
 import org.rm3umf.domain.PseudoFragment;
 import org.rm3umf.domain.SignalComponent;
-import org.rm3umf.domain.TweetEntity;
-import org.rm3umf.domain.TweetTopic;
 import org.rm3umf.domain.User;
 import org.rm3umf.persistenza.AAFacadePersistence;
 import org.rm3umf.persistenza.PersistenceException;
 
 public class EntitySignalComponent implements StrategyExtraction {
 
-	private static Logger logger = Logger.getLogger(TweetTopicSignalComponent.class);
+	//private static Logger logger = Logger.getLogger(TweetTopicSignalComponent.class);
 	private String type = "Entity";
 
 
@@ -32,9 +26,9 @@ public class EntitySignalComponent implements StrategyExtraction {
 		List<SignalComponent> result = new LinkedList<SignalComponent>();
 		Map<String,SignalComponent> map2tf=new HashMap<String, SignalComponent>();
 		SignalComponent sc = null;
-		int max = 0;
+		//int max = 0;
 		for(Message mex: pseudo.getMessages()) {
-			max++;
+			//max++;
 			List<Enrichment> listaen = AAFacadePersistence.getInstance().entityRetrieveByTweetId(mex.getIdMessage());
 			for(Enrichment ne: listaen) {
 				String id_en= ne.getName();

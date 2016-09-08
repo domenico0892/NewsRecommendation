@@ -6,13 +6,11 @@ import java.util.List;
 import java.util.Map;
 
 import org.rm3umf.domain.Enrichment;
-import org.rm3umf.domain.News;
 import org.rm3umf.domain.Signal;
 import org.rm3umf.domain.SignalComponent;
 import org.rm3umf.domain.TruthSignal;
 import org.rm3umf.domain.User;
 import org.rm3umf.framework.buildmodel.extractor.StrategyExtraction;
-import org.rm3umf.math.VectorUtil;
 import org.rm3umf.persistenza.AAFacadePersistence;
 import org.rm3umf.persistenza.PersistenceException;
 /**

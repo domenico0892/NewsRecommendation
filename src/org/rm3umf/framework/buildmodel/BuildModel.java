@@ -1,34 +1,15 @@
 package org.rm3umf.framework.buildmodel;
 
 import java.security.NoSuchAlgorithmException;
-import java.util.Collection;
-import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Set;
-
-import twitter4j.*;
-
 import org.rm3umf.domain.Period;
-import org.rm3umf.domain.PseudoFragment;
-import org.rm3umf.domain.Signal;
-import org.rm3umf.domain.SignalComponent;
 import org.rm3umf.domain.User;
 import org.rm3umf.domain.UserModel;
 import org.rm3umf.framework.buildmodel.extractor.EntitySignalComponent;
 import org.rm3umf.framework.buildmodel.extractor.ExtractorException;
-import org.rm3umf.framework.buildmodel.extractor.NewsEntitySignalComponent;
-import org.rm3umf.framework.buildmodel.extractor.NewsTopicSignalComponent;
-import org.rm3umf.framework.buildmodel.extractor.NewsTypeEntitySignalComponent;
 import org.rm3umf.framework.buildmodel.extractor.StrategyExtraction;
-import org.rm3umf.framework.buildmodel.extractor.TopicSignalComponent;
-import org.rm3umf.framework.buildmodel.extractor.TweetEntitySignalComponent;
-import org.rm3umf.framework.buildmodel.extractor.TweetTopicSignalComponent;
-import org.rm3umf.framework.buildmodel.extractor.TweetTypeEntitySignalComponent;
-import org.rm3umf.framework.buildmodel.extractor.TypeSignalComponent;
-import org.rm3umf.lucene.FacadeLuceneOld;
 import org.rm3umf.persistenza.AAFacadePersistence;
-import org.rm3umf.persistenza.MessageDAO;
 import org.rm3umf.persistenza.PersistenceException;
 
 

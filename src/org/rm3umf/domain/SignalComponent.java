@@ -1,10 +1,5 @@
 package org.rm3umf.domain;
 
-import org.rm3umf.persistenza.AAFacadePersistence;
-import org.rm3umf.persistenza.PersistenceException;
-
-
-
 public class SignalComponent {
 	
 	private Enrichment enrichment;

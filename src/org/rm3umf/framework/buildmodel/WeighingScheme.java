@@ -1,14 +1,10 @@
 package org.rm3umf.framework.buildmodel;
 
 import java.security.NoSuchAlgorithmException;
-import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
-import org.rm3umf.domain.Enrichment;
 import org.rm3umf.domain.SignalComponent;
-import org.rm3umf.domain.News;
 import org.rm3umf.persistenza.AAFacadePersistence;
 import org.rm3umf.persistenza.PersistenceException;
 

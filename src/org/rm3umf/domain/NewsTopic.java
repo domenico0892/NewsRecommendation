@@ -1,8 +1,6 @@
 package org.rm3umf.domain;
 
 import java.util.Date;
-import java.util.LinkedList;
-import java.util.List;
 
 public class NewsTopic extends Enrichment{
 	

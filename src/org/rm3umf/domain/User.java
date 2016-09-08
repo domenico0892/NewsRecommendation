@@ -1,8 +1,6 @@
 package org.rm3umf.domain;
 
 import java.util.List;
-import java.util.Set;
-
 import org.rm3umf.persistenza.AAFacadePersistence;
 import org.rm3umf.persistenza.PersistenceException;
 

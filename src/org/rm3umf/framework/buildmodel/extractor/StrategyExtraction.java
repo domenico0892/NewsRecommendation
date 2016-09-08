@@ -3,7 +3,6 @@ package org.rm3umf.framework.buildmodel.extractor;
 
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import org.rm3umf.domain.Enrichment;
 import org.rm3umf.domain.Message;

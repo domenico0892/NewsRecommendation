@@ -3,9 +3,7 @@ package org.rm3umf.framework.buildmodel;
 import java.util.List;
 
 import org.rm3umf.domain.Enrichment;
-import org.rm3umf.domain.News;
 import org.rm3umf.framework.buildmodel.extractor.StrategyExtraction;
-import org.rm3umf.persistenza.AAFacadePersistence;
 import org.rm3umf.persistenza.PersistenceException;
 
 import twitter4j.internal.logging.Logger;

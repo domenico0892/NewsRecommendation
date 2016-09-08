@@ -1,12 +1,5 @@
 package org.rm3umf.domain;
 
-import java.util.LinkedList;
-import java.util.List;
-
-import org.rm3umf.persistenza.AAFacadePersistence;
-import org.rm3umf.persistenza.PersistenceException;
-
-
 /**
  * E' una classe che mi serve solo per fare l'importing
  * @author Giulz

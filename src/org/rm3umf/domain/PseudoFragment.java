@@ -2,7 +2,7 @@ package org.rm3umf.domain;
 
 import java.util.List;
 
-import org.rm3umf.framework.buildmodel.extractor.ExtractorException;
+//import org.rm3umf.framework.buildmodel.extractor.ExtractorException;
 import org.rm3umf.framework.buildmodel.extractor.StrategyExtraction;
 
 public class PseudoFragment {
