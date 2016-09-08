@@ -5,7 +5,7 @@ import java.util.Set;
 
 import org.rm3umf.framework.eval.Result;
 import org.rm3umf.framework.eval.ValutationFunction;
-import org.rm3umf.lucene.FacadeLucene;
+import org.rm3umf.lucene.FacadeLuceneOld;
 
 import twitter4j.internal.logging.Logger;
 
@@ -30,7 +30,7 @@ import twitter4j.internal.logging.Logger;
 		
 		public RelevantFollowed(){
 			//proparo lucene alla ricerca
-			FacadeLucene.getInstance().prepareSearching();
+			FacadeLuceneOld.getInstance().prepareSearching();
 		}
 		
 		
@@ -41,7 +41,7 @@ import twitter4j.internal.logging.Logger;
 			for(Long userid:listUser){
 				indice++;
 				System.out.println("USER : ("+indice+")"+ userid);
-				List<Long> rilevanteUsers = FacadeLucene.getInstance().retriveRelevantFollower(userid);
+				List<Long> rilevanteUsers = FacadeLuceneOld.getInstance().retriveRelevantFollower(userid);
 				List<Long> listToVatutate = result.getBestUsers(userid);
 				System.out.println("RELEVANT FOLLOWER");
 				

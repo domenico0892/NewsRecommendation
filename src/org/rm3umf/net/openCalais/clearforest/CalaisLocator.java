@@ -7,7 +7,7 @@
 
 package org.rm3umf.net.openCalais.clearforest;
 
-public class CalaisLocator extends org.apache.axis.client.Service implements com.clearforest.Calais {
+public class CalaisLocator extends org.apache.axis.client.Service implements Calais {
 
     public CalaisLocator() {
     }
@@ -39,7 +39,7 @@ public class CalaisLocator extends org.apache.axis.client.Service implements com
         calaisSoapWSDDServiceName = name;
     }
 
-    public com.clearforest.CalaisSoap getcalaisSoap() throws javax.xml.rpc.ServiceException {
+    public CalaisSoap getcalaisSoap() throws javax.xml.rpc.ServiceException {
        java.net.URL endpoint;
         try {
             endpoint = new java.net.URL(calaisSoap_address);
@@ -50,9 +50,9 @@ public class CalaisLocator extends org.apache.axis.client.Service implements com
         return getcalaisSoap(endpoint);
     }
 
-    public com.clearforest.CalaisSoap getcalaisSoap(java.net.URL portAddress) throws javax.xml.rpc.ServiceException {
+    public CalaisSoap getcalaisSoap(java.net.URL portAddress) throws javax.xml.rpc.ServiceException {
         try {
-            com.clearforest.CalaisSoapSoapBindingStub _stub = new com.clearforest.CalaisSoapSoapBindingStub(portAddress, this);
+            CalaisSoapSoapBindingStub _stub = new CalaisSoapSoapBindingStub(portAddress, this);
             _stub.setPortName(getcalaisSoapWSDDServiceName());
             return _stub;
         }
@@ -72,8 +72,8 @@ public class CalaisLocator extends org.apache.axis.client.Service implements com
      */
     public java.rmi.Remote getPort(Class serviceEndpointInterface) throws javax.xml.rpc.ServiceException {
         try {
-            if (com.clearforest.CalaisSoap.class.isAssignableFrom(serviceEndpointInterface)) {
-                com.clearforest.CalaisSoapSoapBindingStub _stub = new com.clearforest.CalaisSoapSoapBindingStub(new java.net.URL(calaisSoap_address), this);
+            if (CalaisSoap.class.isAssignableFrom(serviceEndpointInterface)) {
+                CalaisSoapSoapBindingStub _stub = new CalaisSoapSoapBindingStub(new java.net.URL(calaisSoap_address), this);
                 _stub.setPortName(getcalaisSoapWSDDServiceName());
                 return _stub;
             }

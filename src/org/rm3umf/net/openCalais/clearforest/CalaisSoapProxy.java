@@ -1,8 +1,8 @@
 package org.rm3umf.net.openCalais.clearforest;
 
-public class CalaisSoapProxy implements com.clearforest.CalaisSoap {
+public class CalaisSoapProxy implements CalaisSoap {
   private String _endpoint = null;
-  private com.clearforest.CalaisSoap calaisSoap = null;
+  private CalaisSoap calaisSoap = null;
   
   public CalaisSoapProxy() {
     _initCalaisSoapProxy();
@@ -15,7 +15,7 @@ public class CalaisSoapProxy implements com.clearforest.CalaisSoap {
   
   private void _initCalaisSoapProxy() {
     try {
-      calaisSoap = (new com.clearforest.CalaisLocator()).getcalaisSoap();
+      calaisSoap = (new CalaisLocator()).getcalaisSoap();
       if (calaisSoap != null) {
         if (_endpoint != null)
           ((javax.xml.rpc.Stub)calaisSoap)._setProperty("javax.xml.rpc.service.endpoint.address", _endpoint);
@@ -38,7 +38,7 @@ public class CalaisSoapProxy implements com.clearforest.CalaisSoap {
     
   }
   
-  public com.clearforest.CalaisSoap getCalaisSoap() {
+  public CalaisSoap getCalaisSoap() {
     if (calaisSoap == null)
       _initCalaisSoapProxy();
     return calaisSoap;

@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.Iterator;
 import java.util.List;
@@ -58,7 +59,7 @@ public class FactoryXml {
 			Element elemUser = elemResult.addElement( "user" );
 			elemUser.addAttribute( "id", Long.toString(userid) );
 			//recupero gli utenti piu simili a userid ripsetto alla fun di similarità
-			List<Long> listBest = result.getBestUsers(userid);
+			List<Long> listBest = new ArrayList<Long>(result.getBestUsers(userid).keySet());
 
 			for(Long bestid:listBest){
 				Element best = elemUser.addElement("best");
@@ -115,7 +116,7 @@ public class FactoryXml {
 	    	   for(Element best    : (List<Element>)user.elements("best")){
 	    		   long userBest=Long.parseLong(best.getTextTrim());
 	    		   System.out.println("      best="+userBest);
-	    		   result.addBestUser(userid, userBest);
+	    		   result.addBestUser(userid, userBest, Double.parseDouble(best.attributeValue("score")));
 	    	   }
 	    	   
 	      }
@@ -126,7 +127,7 @@ public class FactoryXml {
 		 Result result= read("Result--(14_05-15_07).xml");
 		 for(Long userid : result.getUser()){
 			 System.out.print(userid+"->");
-			 for(Long best :result.getBestUsers(userid)){
+			 for(Long best :result.getBestUsers(userid).keySet()){
 				 System.out.print(best+",");
 				 
 			 }

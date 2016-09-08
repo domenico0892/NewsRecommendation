@@ -24,7 +24,7 @@ import org.json.simple.parser.ParseException;
 import org.rm3umf.domain.*;
 import org.rm3umf.framework.buildmodel.extractor.ExtractorException;
 import org.rm3umf.framework.buildmodel.extractor.UrlExtractor;
-import org.rm3umf.lucene.FacadeLucene;
+import org.rm3umf.lucene.FacadeLuceneOld;
 import org.rm3umf.net.downloader.QueueException;
 import org.rm3umf.net.twitter.FacadeTwitter4j;
 import org.rm3umf.persistenza.AAFacadePersistence;

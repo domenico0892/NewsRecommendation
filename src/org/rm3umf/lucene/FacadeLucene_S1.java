@@ -2,6 +2,7 @@ package org.rm3umf.lucene;
 
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
@@ -17,14 +18,18 @@ import org.rm3umf.domain.User;
  * @author Giulz
  *
  */
-public class FacadeLucene_S1 implements FacadeLucene{
+public class FacadeLucene_S1 implements FacadeLucene {
 	
-	private Logger logger =Logger.getLogger(FacadeLucene.class);
+	private Logger logger =Logger.getLogger(FacadeLuceneOld.class);
 	private static FacadeLucene instance;
-	private Indexer indexer;
+	private Indexer_s1 indexer;
 	private Search searcher; 
 	private String pathIndice;
 
+	public void prepareSearching(){
+		System.err.println("prepare to seracing");
+		this.searcher=new Search(this.pathIndice);
+	}
 	
 	public static FacadeLucene getInstance(){
 		if(instance==null)
@@ -124,7 +129,7 @@ public class FacadeLucene_S1 implements FacadeLucene{
 		if(searcher!=null){
 
 			try{
-			   	listUser=this.searcher.searchPseudoDocument(pseudodocument);
+			   	listUser=new ArrayList<Long>(this.searcher.searchPseudoDocument(pseudodocument).keySet());
 			}catch (Exception e) {
 					logger.info("errore durante la quersy a lucine");
 					e.printStackTrace();

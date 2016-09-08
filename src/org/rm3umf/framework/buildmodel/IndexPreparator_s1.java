@@ -8,22 +8,24 @@ import java.util.List;
 import java.util.Set;
 
 import org.rm3umf.domain.Message;
+import org.rm3umf.domain.News;
 import org.rm3umf.domain.User;
 import org.rm3umf.domain.UserModel;
-import org.rm3umf.lucene.FacadeLucene;
+import org.rm3umf.lucene.FacadeLuceneOld;
 import org.rm3umf.lucene.FacadeLucene_S1;
 import org.rm3umf.persistenza.AAFacadePersistence;
 import org.rm3umf.persistenza.PersistenceException;
 
 import util.UtilText;
 
-public class IndexPreparator_s1 implements IndexPreparator {
+public class IndexPreparator_s1 extends IndexPreparator {
 	
 	
 	private String pathIndex;
 	
 	
 	public IndexPreparator_s1(String pathIndex){
+		super(pathIndex);
 		this.pathIndex=pathIndex;
 		
 	}
@@ -37,7 +39,7 @@ public class IndexPreparator_s1 implements IndexPreparator {
 		 * efficacemente con gli altri. 
 		 */
 		
-		FacadeLucene facadeLucene_s1=new FacadeLucene_S1(this.pathIndex+"/s1");
+		FacadeLucene_S1 facadeLucene_s1=new FacadeLucene_S1(this.pathIndex+"/s1");
 		facadeLucene_s1.iniziaIndicizzazione();
 		
 		//recupero tutti i modelli utente rrelativi agli utente che hanno almento un segnale
@@ -76,15 +78,23 @@ public class IndexPreparator_s1 implements IndexPreparator {
 	
 	
 	
-	private String getPseudoDocumentNews(User user) throws PersistenceException {
-		List<Message> listMessage=AAFacadePersistence.getInstance().newsRetriveByUser(user.getIduser());
-		String pseudoDocument = "";
-		for(Message m:listMessage){
-			pseudoDocument=pseudoDocument+" \n"+m.getText();
+	private List<News> getPseudoDocumentNews(User user) throws PersistenceException {
+		List<News> listMessage=AAFacadePersistence.getInstance().newsRetriveByUser(user.getIduser());
+		List<News> listNews = new LinkedList<News>();
+		//String pseudoDocument = "";
+		News n = new News();
+		for(News m:listMessage){
+			//pseudoDocument=pseudoDocument+" \n"+m.getText();
+			n.setId(m.getId());
+			n.setTitle(UtilText.removeStopWord(m.getTitle()));
+			n.setDescription(UtilText.removeStopWord(m.getDescription()));
+			n.setNewscontent(UtilText.removeStopWord(m.getNewscontent()));
+			listNews.add(n);
 		}
 		
-		System.out.println("---------------\n"+pseudoDocument+"---------------\n");
-		return UtilText.getInstance().removeStopWord(pseudoDocument);
+		//System.out.println("---------------\n"+pseudoDocument+"---------------\n");
+		//return UtilText.getInstance().removeStopWord(pseudoDocument);
+		return listNews;
 	}
 
 	private String getPseudoDocumentFollowerFollowee(Set<Long> listaFollower, Set<Long> listaFollowed) {

@@ -10,7 +10,7 @@ import java.util.Set;
 import org.rm3umf.domain.Message;
 import org.rm3umf.domain.User;
 import org.rm3umf.domain.UserModel;
-import org.rm3umf.lucene.FacadeLucene;
+import org.rm3umf.lucene.FacadeLuceneOld;
 import org.rm3umf.lucene.FacadeLucene_S1;
 import org.rm3umf.lucene.FacadeLucene_s7;
 import org.rm3umf.persistenza.AAFacadePersistence;
@@ -38,7 +38,7 @@ public class IndexPreparator_s7 implements IndexPreparator {
 		 * efficacemente con gli altri. 
 		 */
 		
-		FacadeLucene facadeLucene_s7=new FacadeLucene_s7(this.pathIndex+"/s7");
+		FacadeLuceneOld facadeLucene_s7=new FacadeLucene_s7(this.pathIndex+"/s7");
 		facadeLucene_s7.iniziaIndicizzazione();
 		
 		//recupero tutti i modelli utente rrelativi agli utente che hanno almento un segnale

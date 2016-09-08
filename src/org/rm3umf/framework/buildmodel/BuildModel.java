@@ -26,7 +26,7 @@ import org.rm3umf.framework.buildmodel.extractor.TweetEntitySignalComponent;
 import org.rm3umf.framework.buildmodel.extractor.TweetTopicSignalComponent;
 import org.rm3umf.framework.buildmodel.extractor.TweetTypeEntitySignalComponent;
 import org.rm3umf.framework.buildmodel.extractor.TypeSignalComponent;
-import org.rm3umf.lucene.FacadeLucene;
+import org.rm3umf.lucene.FacadeLuceneOld;
 import org.rm3umf.persistenza.AAFacadePersistence;
 import org.rm3umf.persistenza.MessageDAO;
 import org.rm3umf.persistenza.PersistenceException;

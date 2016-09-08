@@ -1,33 +1,37 @@
 package org.rm3umf.lucene;
 
 
+
+
+
 import java.io.File;
 import java.io.IOException;
 import java.io.Reader;
 import java.io.StringReader;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
 import org.apache.log4j.*;
+
 import org.apache.lucene.document.Field;
+
 import org.apache.lucene.index.IndexWriter;
+import org.apache.lucene.index.Term;
+import org.rm3umf.domain.News;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.analysis.KeywordAnalyzer;
 import org.apache.lucene.analysis.PerFieldAnalyzerWrapper;
 import org.apache.lucene.analysis.WhitespaceAnalyzer;
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
-import org.rm3umf.domain.User;
 
 
-public class Indexer_s7 extends IndexerOld implements Indexer {
+public class IndexerOld{
 
 	private IndexWriter writer;
-	protected Logger logger = Logger.getLogger("fceval.algorithms.Arru_Zeppi.JaccarSimilality:Index_s1");
+	protected Logger logger = Logger.getLogger("fceval.algorithms.Arru_Zeppi.JaccarSimilality:Index");
 
 
-	public Indexer_s7(String pathIndex) throws IndexException{
-		super(pathIndex);
+	public IndexerOld(String pathIndex) throws IndexException{
 		logger.info("creo l'indice");
 		File f=new File(pathIndex);
 		if(!f.exists()){
@@ -45,6 +49,8 @@ public class Indexer_s7 extends IndexerOld implements Indexer {
 			aWrapper.addAnalyzer("userid", new WhitespaceAnalyzer());
 			aWrapper.addAnalyzer("follower", new WhitespaceAnalyzer());
 			aWrapper.addAnalyzer("followed", new WhitespaceAnalyzer());
+			aWrapper.addAnalyzer("link", new WhitespaceAnalyzer());
+			aWrapper.addAnalyzer("pseudodocument", new StandardAnalyzer());
 			
 			this.writer = new IndexWriter(idx, aWrapper , true);
 			this.logger.info("creato IndexerWriter nel path "+ idx);
@@ -77,26 +83,39 @@ public class Indexer_s7 extends IndexerOld implements Indexer {
 	 * @param links
 	 * @throws IOException
 	 */
-	public void index(List list) throws IOException{
+	public void index(String idUser,Set<Long> follower,Set<Long> followed,String pseudodocument, List<News> pseudodocument_news, List<News> pseudodocument_news_title, List<News> pseudodocument_news_training) throws IOException{
 		// Add some Document objects containing quotes
 		logger.debug("prova ad aggiungere document all'indice");
-		writer.addDocument(createDocument(list));
+		Document doc = new Document();
+		doc.add(new Field("userid",idUser,Field.Store.YES, Field.Index.TOKENIZED)); 
+		doc.add(new Field("pseudodocument",pseudodocument,Field.Store.YES,Field.Index.ANALYZED)); 
+		for(long l: follower) {
+			doc.add(new Field("follower",String.valueOf(l),Field.Store.YES, Field.Index.ANALYZED));
+			doc.add(new Field("s7",String.valueOf(l),Field.Store.YES,Field.Index.ANALYZED)); 
+
+		}
+		for(long l: followed) {
+			doc.add(new Field("followed",String.valueOf(l),Field.Store.YES, Field.Index.ANALYZED));
+			doc.add(new Field("s7",String.valueOf(l),Field.Store.YES,Field.Index.ANALYZED)); 
+		}
+		String s = "";
+		for(News n: pseudodocument_news) {
+			s = n.getTitle()+n.getDescription()+n.getNewscontent();
+			doc.add(new Field("pseudodocument_news",s,Field.Store.YES, Field.Index.ANALYZED));
+			doc.add(new Field("s1",s,Field.Store.YES, Field.Index.ANALYZED));
+
+		}
+		for(News n: pseudodocument_news_title) {
+			s = n.getTitle()+n.getDescription()+n.getNewscontent();
+			doc.add(new Field("news_rec",s,Field.Store.YES, Field.Index.ANALYZED));
+		}
+		for(News n: pseudodocument_news_training) {
+			s = n.getTitle()+n.getDescription()+n.getNewscontent();
+			doc.add(new Field("s1_training",s,Field.Store.YES, Field.Index.ANALYZED));
+		}
+		writer.addDocument(doc);
+
 		this.logger.debug("aggiunta pagina all'indice");
 	}
-
-	/**
-	 * Creo il documento da aggiungere all'indice
-	 * @param html
-	 * @param links
-	 * @return
-	 */
-	public  Document createDocument(List list){
-		Document doc = new Document();
-		doc.add(new Field("userid",(String) list.get(0),Field.Store.YES, Field.Index.TOKENIZED)); 
-		//aggiungo il campo links
-		doc.add(new Field("follower",(String)list.get(1),Field.Store.YES, Field.Index.ANALYZED));
-		doc.add(new Field("followed",(String)list.get(2),Field.Store.YES,Field.Index.ANALYZED)); 
-		return doc;
-	}
-
+	
 }

@@ -12,7 +12,7 @@ import org.rm3umf.domain.News;
 import org.rm3umf.domain.Period;
 import org.rm3umf.domain.User;
 import org.rm3umf.domain.UserModel;
-import org.rm3umf.lucene.FacadeLucene;
+import org.rm3umf.lucene.FacadeLuceneOld;
 import org.rm3umf.persistenza.AAFacadePersistence;
 import org.rm3umf.persistenza.PersistenceException;
 
@@ -38,7 +38,7 @@ public class IndexPreparator {
 		 * efficacemente con gli altri. 
 		 */
 		
-		FacadeLucene facadeLucene=new FacadeLucene(this.pathIndex);
+		FacadeLuceneOld facadeLucene=new FacadeLuceneOld(this.pathIndex);
 		facadeLucene.iniziaIndicizzazione();
 		//recupero tutti i modelli utente rrelativi agli utente che hanno almento un segnale
 		List<UserModel> modelliUtente = AAFacadePersistence.getInstance().userModelRetriveAll(); 

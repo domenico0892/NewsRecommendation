@@ -26,7 +26,7 @@ public class Main {
 		BasicConfigurator.configure();
 		root.setLevel(Level.DEBUG);
 		
-		FacadeLucene facadeLucene=new FacadeLucene("./index");
+		FacadeLuceneOld facadeLucene=new FacadeLuceneOld("./index");
 		//mi preparo a cercare
 		facadeLucene.prepareSearching();
 		

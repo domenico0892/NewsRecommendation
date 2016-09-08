@@ -16,7 +16,7 @@ import org.rm3umf.domain.Message;
 import org.rm3umf.domain.Signal;
 import org.rm3umf.domain.User;
 import org.rm3umf.domain.UserModel;
-import org.rm3umf.lucene.FacadeLucene;
+import org.rm3umf.lucene.FacadeLuceneOld;
 import org.rm3umf.persistenza.AAFacadePersistence;
 import org.rm3umf.persistenza.PersistenceException;
 import org.rm3umf.xml.FactoryXml;
@@ -81,7 +81,7 @@ public class TwittomenderResultCreator {
 			UserModel umCorr = userModels.get(i);
 			iteration++;
 			System.out.println("ITERATION "+iteration+":"+umCorr);
-			Map<Long, Double> bestUsers=FacadeLucene.getInstance().retriveByPseudodocument(getPseudoDocument(umCorr.getUser()));
+			Map<Long, Double> bestUsers=FacadeLuceneOld.getInstance().retriveByPseudodocument(getPseudoDocument(umCorr.getUser()));
 			//mostro tutti gli utenti
 			//			for(Long id: bestUsers)
 			//				System.out.println("    "+id);
@@ -149,7 +149,7 @@ public class TwittomenderResultCreator {
 			UserModel umCorr = userModels.get(i);
 			iteration++;
 			System.out.println("ITERATION "+iteration+":"+umCorr);
-			Map<Long, Double> bestUsers=FacadeLucene.getInstance().retriveByPseudodocument_FolloweeFollower(getPseudoDocument_Followee_Follower(umCorr.getUser()));
+			Map<Long, Double> bestUsers=FacadeLuceneOld.getInstance().retriveByPseudodocument_FolloweeFollower(getPseudoDocument_Followee_Follower(umCorr.getUser()));
 			//mostro tutti gli utenti
 			//			for(Long id: bestUsers)
 			//				System.out.println("    "+id);
@@ -212,7 +212,7 @@ public class TwittomenderResultCreator {
 			UserModel umCorr = userModels.get(i);
 			iteration++;
 			System.out.println("ITERATION "+iteration+":"+umCorr);
-			Map<Long, Double> bestUsers=FacadeLucene.getInstance().retriveByPseudodocument_FolloweeFollower(getPseudoDocument_Followee_Follower(umCorr.getUser()));
+			Map<Long, Double> bestUsers=FacadeLuceneOld.getInstance().retriveByPseudodocument_FolloweeFollower(getPseudoDocument_Followee_Follower(umCorr.getUser()));
 			//mostro tutti gli utenti
 			//			for(Long id: bestUsers)
 			//				System.out.println("    "+id);
@@ -283,7 +283,7 @@ public class TwittomenderResultCreator {
 			UserModel umCorr = userModels.get(i);
 			iteration++;
 			//System.out.println("ITERATION "+iteration+":"+umCorr);
-			Map<Long, Double> bestUsers=FacadeLucene.getInstance().retriveByNews(getNews(umCorr.getUser()));
+			Map<Long, Double> bestUsers=FacadeLuceneOld.getInstance().retriveByNews(getNews(umCorr.getUser()));
 			//mostro tutti gli utenti
 			//			for(Long id: bestUsers)
 			//				System.out.println("    "+id);
@@ -348,7 +348,7 @@ public class TwittomenderResultCreator {
 			UserModel umCorr = userModels.get(i);
 			iteration++;
 			System.out.println("ITERATION "+iteration+":"+umCorr);
-			Map<Long, Double> bestUsers=FacadeLucene.getInstance().retriveByPseudodocumentTraining(getPseudoDocumentTraining(umCorr.getUser()));
+			Map<Long, Double> bestUsers=FacadeLuceneOld.getInstance().retriveByPseudodocumentTraining(getPseudoDocumentTraining(umCorr.getUser()));
 			//mostro tutti gli utenti
 			//			for(Long id: bestUsers)
 			//				System.out.println("    "+id);
@@ -401,7 +401,7 @@ public class TwittomenderResultCreator {
 	private String getPseudoDocument(User user){
 		String pseudodocument="";
 		try {
-			pseudodocument=FacadeLucene.getInstance().getPseudodocument(user.getIduser());
+			pseudodocument=FacadeLuceneOld.getInstance().getPseudodocument(user.getIduser());
 
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
@@ -428,7 +428,7 @@ public class TwittomenderResultCreator {
 	private String getPseudoDocumentTraining(User user){
 		String pseudodocument="";
 		try {
-			pseudodocument=FacadeLucene.getInstance().getPseudodocumentTraining(user.getIduser());
+			pseudodocument=FacadeLuceneOld.getInstance().getPseudodocumentTraining(user.getIduser());
 
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
@@ -460,7 +460,7 @@ public class TwittomenderResultCreator {
 	private String getPseudoDocument_Followee_Follower(User user){
 		String pseudodocument="";
 		try {
-			pseudodocument=FacadeLucene.getInstance().getPseudodocument_Followee_Follower(user.getIduser());
+			pseudodocument=FacadeLuceneOld.getInstance().getPseudodocument_Followee_Follower(user.getIduser());
 
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
@@ -487,7 +487,7 @@ public class TwittomenderResultCreator {
 	private String getNews(User user){
 		String pseudodocument="";
 		try {
-			pseudodocument=FacadeLucene.getInstance().getNews(user.getIduser());
+			pseudodocument=FacadeLuceneOld.getInstance().getNews(user.getIduser());
 
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block

@@ -20,13 +20,14 @@ import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.rm3umf.domain.User;
 
 
-public class Indexer_s1 implements Indexer{
+public class Indexer_s1 extends IndexerOld {
 
 	private IndexWriter writer;
 	protected Logger logger = Logger.getLogger("fceval.algorithms.Arru_Zeppi.JaccarSimilality:Index_s1");
 
 
 	public Indexer_s1(String pathIndex) throws IndexException{
+		super(pathIndex);
 		logger.info("creo l'indice");
 		File f=new File(pathIndex);
 		if(!f.exists()){

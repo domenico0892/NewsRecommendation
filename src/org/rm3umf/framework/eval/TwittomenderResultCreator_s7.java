@@ -14,7 +14,7 @@ import org.rm3umf.domain.Message;
 import org.rm3umf.domain.Signal;
 import org.rm3umf.domain.User;
 import org.rm3umf.domain.UserModel;
-import org.rm3umf.lucene.FacadeLucene;
+import org.rm3umf.lucene.FacadeLuceneOld;
 import org.rm3umf.lucene.FacadeLucene_S1;
 import org.rm3umf.lucene.FacadeLucene_s7;
 import org.rm3umf.persistenza.AAFacadePersistence;

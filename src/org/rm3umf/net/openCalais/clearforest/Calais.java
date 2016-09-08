@@ -10,7 +10,7 @@ package org.rm3umf.net.openCalais.clearforest;
 public interface Calais extends javax.xml.rpc.Service {
     public java.lang.String getcalaisSoapAddress();
 
-    public com.clearforest.CalaisSoap getcalaisSoap() throws javax.xml.rpc.ServiceException;
+    public CalaisSoap getcalaisSoap() throws javax.xml.rpc.ServiceException;
 
-    public com.clearforest.CalaisSoap getcalaisSoap(java.net.URL portAddress) throws javax.xml.rpc.ServiceException;
+    public CalaisSoap getcalaisSoap(java.net.URL portAddress) throws javax.xml.rpc.ServiceException;
 }
