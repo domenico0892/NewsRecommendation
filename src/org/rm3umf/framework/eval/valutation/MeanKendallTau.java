@@ -1,5 +1,6 @@
 package org.rm3umf.framework.eval.valutation;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
@@ -74,7 +75,7 @@ public class MeanKendallTau implements ValutationFunction{
 			
 
 			//Recupero gli n best user rispetto all'utente userid in result
-			List<Long> listToVatutate = result.getBestUsers(userid);
+			List<Long> listToVatutate = new ArrayList<Long>(result.getBestUsers(userid).keySet());
 			
 			double totalElem=listToVatutate.size();
 			System.out.println("SIMILARITY FUNCTION");
@@ -211,6 +212,12 @@ public class MeanKendallTau implements ValutationFunction{
 		
 	
 		
+	}
+
+	@Override
+	public double valutate(Result training, Result test) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 	
 	

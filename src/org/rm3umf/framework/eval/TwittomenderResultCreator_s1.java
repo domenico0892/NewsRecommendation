@@ -6,8 +6,11 @@ import java.io.StringReader;
 import java.text.SimpleDateFormat;
 import java.util.Collections;
 import java.util.GregorianCalendar;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.lucene.queryParser.ParseException;
 import org.rm3umf.domain.Message;
@@ -35,8 +38,8 @@ public class TwittomenderResultCreator_s1 extends TwittomenderResultCreator{
 	
 		
 	public TwittomenderResultCreator_s1(int n){
+		super(n);
 		FacadeLucene_S1.getInstance().prepareSearching();
-		super.n=n;
 	}
 	
 	/**
@@ -78,14 +81,23 @@ public class TwittomenderResultCreator_s1 extends TwittomenderResultCreator{
 			UserModel umCorr = userModels.get(i);
 			iteration++;
 			System.out.println("ITERATION "+iteration+":"+umCorr);
-			List<Long> bestUsers=FacadeLucene_S1.getInstance().retriveByPseudodocument(getPseudoDocument(umCorr.getUser()));
+			Map<Long, Double> bestUsers=FacadeLucene_S1.getInstance().retriveByPseudodocument(getPseudoDocument(umCorr.getUser()));
 			//mostro tutti gli utenti
 //			for(Long id: bestUsers)
 //				System.out.println("    "+id);
 			long useridCorr=umCorr.getUser().getIduser();
 			//salvo il risultato 
 			if(bestUsers.size()>n){
-				bestUsers=bestUsers.subList(0,this.n);
+				Map<Long, Double> subBestUsers = new HashMap<Long, Double>();
+				Iterator<Long> it = bestUsers.keySet().iterator();
+				Long key;
+				int k=0;
+				while (it.hasNext() && i<n) {
+					key = it.next();
+					subBestUsers.put(key, bestUsers.get(key));
+					k++;
+				}
+				
 			}
 			result.addListBestUser(useridCorr, bestUsers);
 		}

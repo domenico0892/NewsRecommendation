@@ -56,9 +56,9 @@ public class IndexPreparator_s1 extends IndexPreparator {
 				Set<Long> listaFollower=AAFacadePersistence.getInstance().userGetFollower(user.getIduser());
 				Set<Long> listaFollowed=AAFacadePersistence.getInstance().userGetFollowed(user.getIduser());
 				String pseudodocument = getPseudoDocument(um.getUser());
-				String pseudodocument_news = getPseudoDocumentNews(um.getUser());
+				List<News> pseudodocument_news = getPseudoDocumentNews(um.getUser());
 				
-				List list = new LinkedList<Object>();
+				List<Object> list = new LinkedList<Object>();
 				list.add(user);
 				list.add(listaFollower);
 				list.add(listaFollowed);

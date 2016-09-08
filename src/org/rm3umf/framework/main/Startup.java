@@ -1,6 +1,5 @@
 package org.rm3umf.framework.main;
 
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -29,7 +28,7 @@ import org.rm3umf.framework.buildmodel.extractor.TypeSignalComponent;
 import org.rm3umf.framework.eval.Result;
 import org.rm3umf.framework.eval.SimilarityFunction;
 import org.rm3umf.framework.eval.TwittomenderResultCreator;
-import org.rm3umf.framework.eval.ValutationEngine;
+//import org.rm3umf.framework.eval.ValutationEngine;
 import org.rm3umf.framework.eval.Valutator;
 import org.rm3umf.framework.eval.ValutationFunction;
 import org.rm3umf.framework.eval.similarity.CosineSimilarity;
@@ -153,7 +152,7 @@ public class Startup {
 		 */
 
 		List<ValutationFunction> listValFun=new LinkedList<ValutationFunction>();
-		ValutationEngine valutationEngine = new ValutationEngine();
+		//ValutationEngine valutationEngine = new ValutationEngine();
 		//AnalyzerResult resultAnalyzer  = new  MeanKendallTau(new LuceneFriendFollower());
 		//		listValFun.add(new  SuccessAtRankK());
 		//		listValFun.add(new   MeanReciprocalRank());

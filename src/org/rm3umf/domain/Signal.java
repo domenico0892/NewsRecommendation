@@ -6,7 +6,14 @@ public class Signal implements Comparable<Signal>{
 	private Enrichment enrichment;
 	private double[] signal;
 	private String type;
+	private Concept concept;
 	
+	public Concept getConcept() {
+		return concept;
+	}
+	public void setConcept(Concept concept) {
+		this.concept = concept;
+	}
 	public User getUser() {
 		return user;
 	}

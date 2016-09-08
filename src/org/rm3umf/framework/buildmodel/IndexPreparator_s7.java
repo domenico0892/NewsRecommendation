@@ -18,13 +18,14 @@ import org.rm3umf.persistenza.PersistenceException;
 
 import util.UtilText;
 
-public class IndexPreparator_s7 implements IndexPreparator {
+public class IndexPreparator_s7 extends IndexPreparator {
 	
 	
 	private String pathIndex;
 	
 	
 	public IndexPreparator_s7(String pathIndex){
+		super(pathIndex);
 		this.pathIndex=pathIndex;
 		
 	}
@@ -38,7 +39,7 @@ public class IndexPreparator_s7 implements IndexPreparator {
 		 * efficacemente con gli altri. 
 		 */
 		
-		FacadeLuceneOld facadeLucene_s7=new FacadeLucene_s7(this.pathIndex+"/s7");
+		FacadeLucene_s7 facadeLucene_s7=new FacadeLucene_s7(this.pathIndex+"/s7");
 		facadeLucene_s7.iniziaIndicizzazione();
 		
 		//recupero tutti i modelli utente rrelativi agli utente che hanno almento un segnale
@@ -55,7 +56,7 @@ public class IndexPreparator_s7 implements IndexPreparator {
 				Set<Long> listaFollower=AAFacadePersistence.getInstance().userGetFollower(user.getIduser());
 				Set<Long> listaFollowed=AAFacadePersistence.getInstance().userGetFollowed(user.getIduser());
 				
-				List list = new LinkedList<Object>();
+				List<Object> list = new LinkedList<Object>();
 				list.add(user);
 				list.add(listaFollower);
 				list.add(listaFollowed);

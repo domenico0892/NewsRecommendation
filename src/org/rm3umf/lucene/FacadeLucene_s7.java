@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import org.apache.log4j.*;
@@ -18,16 +19,16 @@ import org.rm3umf.domain.User;
  * @author Giulz
  *
  */
-public class FacadeLucene_s7 implements FacadeLucene{
+public class FacadeLucene_s7 extends FacadeLuceneOld {
 	
 	private Logger logger =Logger.getLogger(FacadeLuceneOld.class);
-	private static FacadeLucene instance;
+	private static FacadeLucene_s7 instance;
 	private Indexer_s7 indexer;
 	private Search searcher; 
 	private String pathIndice;
 
 	
-	public static FacadeLucene getInstance(){
+	public static FacadeLucene_s7 getInstance(){
 		if(instance==null)
 			instance=new FacadeLucene_s7("./index/s7");
 		return instance;
@@ -35,6 +36,7 @@ public class FacadeLucene_s7 implements FacadeLucene{
 
 
 	public FacadeLucene_s7(String pathIndice){
+		super(pathIndice);
 		this.pathIndice=pathIndice;
 	}
 
@@ -117,13 +119,13 @@ public class FacadeLucene_s7 implements FacadeLucene{
 	 * Dato uno userid mi restituisce i gli utenti rilevanti secondo la metrica 
 	 * followed/followers 
 	 */
-	public List<Long> retriveByPseudodocument(String pseudodocument){
-		List<Long> listUser=null;
+	public Map<Long, Double> retriveByPseudodocument(String pseudodocument){
+		Map<Long, Double> listUser=null;
 
 		if(searcher!=null){
 
 			try{
-			   	listUser=new ArrayList<Long>(this.searcher.searchPseudoDocument(pseudodocument).keySet());
+			   	listUser=this.searcher.searchPseudoDocument(pseudodocument);
 			}catch (Exception e) {
 					logger.info("errore durante la quersy a lucine");
 					e.printStackTrace();

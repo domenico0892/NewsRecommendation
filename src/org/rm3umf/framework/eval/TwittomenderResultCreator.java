@@ -36,10 +36,10 @@ import util.UtilText;
 public class TwittomenderResultCreator {
 
 
-	private int n;
+	protected int n;
 
 	public TwittomenderResultCreator(int n){
-		FacadeLucene.getInstance().prepareSearching();
+		FacadeLuceneOld.getInstance().prepareSearching();
 		this.n=n;
 	}
 

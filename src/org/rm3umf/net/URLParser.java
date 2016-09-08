@@ -4,6 +4,8 @@ package org.rm3umf.net;
 import java.io.IOException;
 import java.net.URL;
 
+import org.apache.log4j.Logger;
+
 import de.l3s.boilerpipe.BoilerpipeProcessingException;
 import de.l3s.boilerpipe.extractors.ArticleExtractor;
 import de.l3s.boilerpipe.extractors.ArticleSentencesExtractor;
@@ -18,7 +20,7 @@ import de.l3s.boilerpipe.extractors.ExtractorBase;
 
 public class URLParser {
 	
-   private static final twitter4j.Logger logger = Logger.getLogger(URLParser.class);
+   private static final Logger logger = Logger.getLogger(URLParser.class);
    
    	private ExtractorBase extr;
 	private Server server;

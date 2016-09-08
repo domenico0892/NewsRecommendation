@@ -1,5 +1,6 @@
 package org.rm3umf.framework.eval.valutation;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -42,7 +43,7 @@ import twitter4j.internal.logging.Logger;
 				indice++;
 				System.out.println("USER : ("+indice+")"+ userid);
 				List<Long> rilevanteUsers = FacadeLuceneOld.getInstance().retriveRelevantFollower(userid);
-				List<Long> listToVatutate = result.getBestUsers(userid);
+				List<Long> listToVatutate = new ArrayList<Long>(result.getBestUsers(userid).keySet());
 				System.out.println("RELEVANT FOLLOWER");
 				
 				//Modella il fatto che se trovo un utente rilevante alla prima posizione è diverso che se lo trovo alla decimo
@@ -70,6 +71,13 @@ import twitter4j.internal.logging.Logger;
 		public String getNameFunction() {
 			// TODO Auto-generated method stub
 			return null;
+		}
+
+
+		@Override
+		public double valutate(Result training, Result test) {
+			// TODO Auto-generated method stub
+			return 0;
 		}
 
 

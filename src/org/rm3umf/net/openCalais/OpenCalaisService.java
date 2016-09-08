@@ -11,7 +11,7 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.rm3umf.net.URLParser;
+//import org.rm3umf.net.URLParser;
 
 import twitter4j.internal.logging.Logger;
 import util.Cronometro;
