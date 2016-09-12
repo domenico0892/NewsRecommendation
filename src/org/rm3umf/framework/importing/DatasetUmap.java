@@ -5,12 +5,17 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.rm3umf.domain.Message;
+import org.rm3umf.domain.News;
 import org.rm3umf.domain.User;
+import org.rm3umf.persistenza.PersistenceException;
+import org.rm3umf.persistenza.postgreSQL.DataSourcePostgreSQL;
 
 import com.mysql.jdbc.jdbc2.optional.ConnectionWrapper;
 
@@ -27,6 +32,99 @@ public class DatasetUmap implements DatasetAdapter{
 	
 	
 	private static final Logger log = Logger.getLogger(DatasetUmap.class); 
+	
+	public News doRetrieveNewsByUrl(String url) throws PersistenceException {
+		//DataSourcePostgreSQL ds = DataSourcePostgreSQL.getInstance();
+		Connection connection = null;
+		PreparedStatement statement = null;
+		ResultSet result = null;
+		News n = null;
+		try {
+			try {
+				connection = getConnection();
+			} catch (DatasetException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			String retrieve = "SELECT * " +
+					"FROM news " +
+					"WHERE url=?";
+			statement = connection.prepareStatement(retrieve);
+			statement.setString(1, url);
+			result = statement.executeQuery();
+			if(result.next()){
+				DateFormat df = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+				n = new News();
+				n.setId(result.getString(1));
+				n.setSource(result.getString(2));
+				n.setCategory(result.getString(3));
+				n.setUrl(result.getString(4));
+				n.setTitle(result.getString(5));
+				n.setDescription(result.getString(6));
+				n.setNewscontent(result.getString(7));
+				n.setPublish_date(String.valueOf(result.getDate(8)));
+				n.setUpdate_date(String.valueOf(result.getDate(9)));
+				n.setCrawl_date(String.valueOf(result.getDate(10)));
+				//dovre mettere il type quando necessario
+			}
+		}catch (SQLException e) {
+			throw new PersistenceException(e.getMessage());
+		}
+		finally {
+			try {
+				if (result != null)
+					result.close();
+				if (statement != null) 
+					statement.close();
+				if (connection!= null)
+					connection.close();
+			} catch (SQLException e) {
+				throw new PersistenceException(e.getMessage());
+			}
+		}
+		return n;
+	}
+	
+	public String retriveJsonTextFromId(String id) throws PersistenceException {
+		//DataSourcePostgreSQL ds = DataSourcePostgreSQL.getInstance();
+		Connection connection = null;
+		PreparedStatement statement = null;
+		ResultSet result = null;
+		String json_str = null;
+		try {
+			try {
+				connection = getConnection();
+			} catch (DatasetException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			//System.out.println("id json:" + id);
+			String retrieve = "select json from tweets_sample where id=?";
+			statement = connection.prepareStatement(retrieve);
+			statement.setString(1, id);
+			result = statement.executeQuery();
+			if (result.next()) {
+				json_str = result.getString(1);
+				//System.out.println(json_str);
+			}
+		}
+		catch (SQLException e) {
+			throw new PersistenceException(e.getMessage());
+		}
+		finally {
+			try {
+				if (result != null)
+					result.close();
+				if (statement != null) 
+					statement.close();
+				if (connection!= null)
+					connection.close();
+			} catch (SQLException e) {
+				throw new PersistenceException(e.getMessage());
+			}
+		}
+		return json_str;
+	}
 	
 	public List<User> getObject() throws DatasetException{
 		log.info("recupero utenti dal Dataset");
@@ -164,9 +262,9 @@ public class DatasetUmap implements DatasetAdapter{
 	 */
 	private Connection getConnection() throws DatasetException {
 		String driver = "com.mysql.jdbc.Driver";
-		String dbURI = "jdbc:mysql://localhost/tweets_sample";
+		String dbURI = "jdbc:mysql://localhost/twitter";
 		String userName = "root";
-		String password = "";
+		String password = "ai-lab";
 
 		Connection connection;
 		try {

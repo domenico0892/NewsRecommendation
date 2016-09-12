@@ -41,5 +41,6 @@ public class StartupImp {
 		Importer importing = new Importer();
 		//System.out.println(java.lang.Runtime.getRuntime().maxMemory()); 
 		importing.start();
+		System.out.println("END");
 	} 
 }

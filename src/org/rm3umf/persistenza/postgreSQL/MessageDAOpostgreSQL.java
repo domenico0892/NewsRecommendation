@@ -240,12 +240,14 @@ public class MessageDAOpostgreSQL implements MessageDAO{
 		String json_str = null;
 		try {
 			connection = ds.getConnection();
+			System.out.println("id json:" + id);
 			String retrieve = "select json from tweets_sample where id=?";
 			statement = connection.prepareStatement(retrieve);
 			statement.setString(1, id);
 			result = statement.executeQuery();
 			if (result.next()) {
 				json_str = result.getString(1);
+				System.out.println(json_str);
 			}
 		}
 		catch (SQLException e) {

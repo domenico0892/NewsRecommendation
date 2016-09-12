@@ -67,9 +67,10 @@ public class Importer {
 
 	private DatasetAdapter dataset;
 	private UrlExtractor urlextractor;
-	
+
 
 	public Importer(){
+		this.urlextractor = new UrlExtractor();
 	}
 
 	public void start() throws DatasetException, PersistenceException, QueueException, IOException, InterruptedException, TwitterException, NoSuchAlgorithmException{
@@ -80,7 +81,8 @@ public class Importer {
 		//	AAFacadePersistence.getInstance().prepareDBImporting();
 
 		//FILTRO IMPORTING
-		 dataset = new DatasetUmap();
+		dataset = new DatasetUmap();
+		SocialEnricherFromDB modelEnricher = new SocialEnricherFromDB();
 
 		// MI PRENDO DA dataset_umap la lista di USER
 		List<User> utentiDataset= (List<User>) dataset.getObject();
@@ -98,37 +100,46 @@ public class Importer {
 				//	boolean isPublicProfine=false;
 				Set<Long> listaFollower=null;
 				Set<Long> listaFollowed=null;
-				Set<Long> rilevantFollowers=null;
+				//Set<Long> rilevantFollowers=null;
 
 				//Recupero i follower e followed dell'utente corrente	
-				//				listaFollower=modelEnricher.getFollower(user.getIduser());
-				//				listaFollowed=modelEnricher.getFollowed(user.getIduser());
+				listaFollower = modelEnricher.getFollower(user.getIduser());
+				listaFollowed = modelEnricher.getFollowed(user.getIduser());
 
-				//se l'utente non ha il profilo pubblico si va avanti listaFollowed e listaFollower saranno null
-				List<Message> listaMessaggi=null;
-				listaMessaggi = dataset.getMessagesByUser(user);
-				Map<News, String> listanews = urlextractor.getNews(listaMessaggi);
-								for(News n : listanews.keySet() ) {
-									try{
-										AAFacadePersistence.getInstance().newsUserSave(n.getId(), user.getIduser(), listanews.get(n));
-									} catch(PersistenceException e) {
+				if (listaFollower.size() != 0 && listaFollower.size() != 0) {
+
+					//salvo l'utente con tutte le sue relazioni
+					AAFacadePersistence.getInstance().userSave(user);
+
+					//salvo followed e followers dell'utente user
+					AAFacadePersistence.getInstance().userSaveFollowed(user, listaFollowed);
+					AAFacadePersistence.getInstance().userSaveFollower(user, listaFollower);
+
+
+					List<Message> listaMessaggi=null;
+					listaMessaggi = dataset.getMessagesByUser(user);
+
+					for(Message message:listaMessaggi){
+						//salvo il messaggio con le risorse che sono state trovate
+						AAFacadePersistence.getInstance().messageSave(message);
+						logger.info("salvato messaggio:"+message);				
+					}
+
+					Map<News, String> listanews = urlextractor.getNews(listaMessaggi);
+					for(News n : listanews.keySet() ) {
+						try{
+							AAFacadePersistence.getInstance().newsUserSave(n.getId(), user.getIduser(), listanews.get(n));
+						} 
+						catch(PersistenceException e) {
+							System.err.println("Persistance Exception");
+						}
+					}
+				}
+			}
+			catch (Exception e) {
 				
-									}
-								}
-
-				//salvo l'utente con tutte le sue relazioni
-				//				AAFacadePersistence.getInstance().userSave(user);
-				//salvo followed e followers dell'utente user
-				//				AAFacadePersistence.getInstance().userSaveFollowed(user, listaFollowed);
-				//				AAFacadePersistence.getInstance().userSaveFollower(user, listaFollower);
-
-
-			} catch (Exception e) {
-				e.printStackTrace();
 			}
 		}
 	}
-
-
-	
 }
+		

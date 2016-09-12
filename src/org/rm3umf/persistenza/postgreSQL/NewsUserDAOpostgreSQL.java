@@ -27,6 +27,7 @@ public class NewsUserDAOpostgreSQL implements NewsUserDao {
 			statement.setLong(2, id_user);
 			statement.setString(3, id_tweet);
 			statement.executeUpdate();		
+			System.err.println("fine save user_news");
 		}
 		catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
