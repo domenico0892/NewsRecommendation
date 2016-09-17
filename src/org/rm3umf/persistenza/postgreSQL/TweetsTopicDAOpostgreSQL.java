@@ -30,7 +30,25 @@ public class TweetsTopicDAOpostgreSQL implements TweetsTopicDAO{
 
 	private Logger logger = Logger.getLogger(TweetsTopicDAOpostgreSQL.class);
 
-
+	public void saveTweetTopic (TweetTopic n) throws PersistenceException {
+		String query = "INSERT INTO semanticsTweetTopic VALUES (?, ?, ?, ?, ?, ?)";
+		DataSourcePostgreSQL ds = DataSourcePostgreSQL.getInstance();
+		try {
+			Connection connection = ds.getConnection();
+			PreparedStatement statement = connection.prepareStatement(query);
+			statement.setLong(1, n.getTweet().getUser().getIduser());
+			statement.setLong(2, Long.parseLong(n.getTweet().getIdMessage()));
+			statement.setString(3, n.getTopic());
+			statement.setString(4, n.getUri());
+			statement.setDouble(5, n.getRelevance());
+			statement.setTimestamp(6, n.getCreation_time());			
+			statement.execute();
+		}
+		catch (SQLException e) {
+			logger.error("errore nell'inserimento della tweet topic");
+		}
+		
+	}
 
 	@Override
 	public List<TweetTopic> getTweetTopicFromTweetId(String tweetId, String type) throws PersistenceException {
@@ -63,7 +81,7 @@ public class TweetsTopicDAOpostgreSQL implements TweetsTopicDAO{
 				ne.setUri(result.getString(4));
 				ne.setRelevance(result.getDouble(5));
 				try {
-					ne.setCreation_time(result.getDate(6));
+					ne.setCreation_time(result.getTimestamp(6));
 				} catch (SQLException ex) {
 					ne.setCreation_time(null);
 				}
@@ -75,18 +93,18 @@ public class TweetsTopicDAOpostgreSQL implements TweetsTopicDAO{
 		}catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
 		}
-		finally {
-			try {
-				if (result != null)
-					result.close();
-				if (statement != null) 
-					statement.close();
-				if (connection!= null)
-					connection.close();
-			} catch (SQLException e) {
-				throw new PersistenceException(e.getMessage());
-			}
-		}
+//		finally {
+//			try {
+//				if (result != null)
+//					result.close();
+//				if (statement != null) 
+//					statement.close();
+//				if (connection!= null)
+//					connection.close();
+//			} catch (SQLException e) {
+//				throw new PersistenceException(e.getMessage());
+//			}
+//		}
 		return lista;
 	}
 
@@ -121,7 +139,7 @@ public class TweetsTopicDAOpostgreSQL implements TweetsTopicDAO{
 				ne.setUri(result.getString(4));
 				ne.setRelevance(result.getDouble(5));
 				try {
-					ne.setCreation_time(result.getDate(6));
+					ne.setCreation_time(result.getTimestamp(6));
 				} catch (SQLException ex) {
 					ne.setCreation_time(null);
 				}
@@ -133,18 +151,18 @@ public class TweetsTopicDAOpostgreSQL implements TweetsTopicDAO{
 		}catch (SQLException e1) {
 			throw new PersistenceException(e1.getMessage());
 		}
-		finally {
-			try {
-				if (result != null)
-					result.close();
-				if (statement != null) 
-					statement.close();
-				if (connection!= null)
-					connection.close();
-			} catch (SQLException e1) {
-				throw new PersistenceException(e1.getMessage());
-			}
-		}
+//		finally {
+//			try {
+//				if (result != null)
+//					result.close();
+//				if (statement != null) 
+//					statement.close();
+//				if (connection!= null)
+//					connection.close();
+//			} catch (SQLException e1) {
+//				throw new PersistenceException(e1.getMessage());
+//			}
+//		}
 		return lista;
 	}
 
@@ -177,18 +195,18 @@ public class TweetsTopicDAOpostgreSQL implements TweetsTopicDAO{
 		}catch (SQLException e1) {
 			throw new PersistenceException(e1.getMessage());
 		}
-		finally {
-			try {
-				if (result != null)
-					result.close();
-				if (statement != null) 
-					statement.close();
-				if (connection!= null)
-					connection.close();
-			} catch (SQLException e1) {
-				throw new PersistenceException(e1.getMessage());
-			}
-		}
+//		finally {
+//			try {
+//				if (result != null)
+//					result.close();
+//				if (statement != null) 
+//					statement.close();
+//				if (connection!= null)
+//					connection.close();
+//			} catch (SQLException e1) {
+//				throw new PersistenceException(e1.getMessage());
+//			}
+//		}
 		return listnewsentity;
 	}
 
@@ -208,16 +226,16 @@ public class TweetsTopicDAOpostgreSQL implements TweetsTopicDAO{
 		catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
 		}
-		finally {
-			try {
-				if (statement != null) 
-					statement.close();
-				if (connection!= null)
-					connection.close();
-			} catch (SQLException e) {
-				throw new PersistenceException(e.getMessage());
-			}
-		}
+//		finally {
+//			try {
+//				if (statement != null) 
+//					statement.close();
+//				if (connection!= null)
+//					connection.close();
+//			} catch (SQLException e) {
+//				throw new PersistenceException(e.getMessage());
+//			}
+//		}
 	}
 
 	@Override
@@ -242,18 +260,18 @@ public class TweetsTopicDAOpostgreSQL implements TweetsTopicDAO{
 		}catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
 		}
-		finally {
-			try {
-				if (result != null)
-					result.close();
-				if (statement != null) 
-					statement.close();
-				if (connection!= null)
-					connection.close();
-			} catch (SQLException e) {
-				throw new PersistenceException(e.getMessage());
-			}
-		}
+//		finally {
+//			try {
+//				if (result != null)
+//					result.close();
+//				if (statement != null) 
+//					statement.close();
+//				if (connection!= null)
+//					connection.close();
+//			} catch (SQLException e) {
+//				throw new PersistenceException(e.getMessage());
+//			}
+//		}
 		return lista;
 	}
 
@@ -286,18 +304,18 @@ public class TweetsTopicDAOpostgreSQL implements TweetsTopicDAO{
 		}catch (SQLException e1) {
 			throw new PersistenceException(e1.getMessage());
 		}
-		finally {
-			try {
-				if (result != null)
-					result.close();
-				if (statement != null) 
-					statement.close();
-				if (connection!= null)
-					connection.close();
-			} catch (SQLException e1) {
-				throw new PersistenceException(e1.getMessage());
-			}
-		}
+//		finally {
+//			try {
+//				if (result != null)
+//					result.close();
+//				if (statement != null) 
+//					statement.close();
+//				if (connection!= null)
+//					connection.close();
+//			} catch (SQLException e1) {
+//				throw new PersistenceException(e1.getMessage());
+//			}
+//		}
 		return mappa;
 	}
 	
@@ -332,18 +350,18 @@ public class TweetsTopicDAOpostgreSQL implements TweetsTopicDAO{
 		catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
 		}
-		finally {
-			try {
-				if (result != null)
-					result.close();
-				if (statement != null) 
-					statement.close();
-				if (connection!= null)
-					connection.close();
-			} catch (SQLException e) {
-				throw new PersistenceException(e.getMessage());
-			}
-		}
+//		finally {
+//			try {
+//				if (result != null)
+//					result.close();
+//				if (statement != null) 
+//					statement.close();
+//				if (connection!= null)
+//					connection.close();
+//			} catch (SQLException e) {
+//				throw new PersistenceException(e.getMessage());
+//			}
+//		}
 		return listaTweet;
 	}
 }

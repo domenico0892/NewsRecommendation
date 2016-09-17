@@ -25,7 +25,7 @@ public class MessageEnrichmentDAOpostgreSQL implements MessageEnrichmentDAO {
 		catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
 		}
-		finally {
+	/*	finally {
 			try {
 				if (statement != null) 
 					statement.close();
@@ -34,7 +34,7 @@ public class MessageEnrichmentDAOpostgreSQL implements MessageEnrichmentDAO {
 			} catch (SQLException e) {
 				throw new PersistenceException(e.getMessage());
 			}
-		}
+		}*/
 	}
 	
 	public void deleteAll() throws PersistenceException {
@@ -49,7 +49,7 @@ public class MessageEnrichmentDAOpostgreSQL implements MessageEnrichmentDAO {
 		catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
 		}
-		finally {
+		/*finally {
 			try {
 				if (statement != null) 
 					statement.close();
@@ -58,7 +58,7 @@ public class MessageEnrichmentDAOpostgreSQL implements MessageEnrichmentDAO {
 			} catch (SQLException e) {
 				throw new PersistenceException(e.getMessage());
 			}
-		}
+		}*/
 	}
 
 

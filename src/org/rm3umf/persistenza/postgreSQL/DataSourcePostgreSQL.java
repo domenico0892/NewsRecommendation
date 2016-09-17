@@ -8,35 +8,74 @@ import java.sql.SQLException;
 import org.rm3umf.persistenza.*;
 
 public class DataSourcePostgreSQL implements DataSource{
-	   private static DataSourcePostgreSQL instance = null;
-	   private DataSourcePostgreSQL() {}
-	   
-	   public static DataSourcePostgreSQL getInstance() {
-	      if(instance == null) {
-	         instance = new DataSourcePostgreSQL();
-	      }
-	      return instance;
-	   }
-	   
-		public Connection getConnection() throws PersistenceException {
-			String driver = "com.mysql.jdbc.Driver";
-			String dbURI = "jdbc:mysql://localhost:3306/new_news_recommendation";
-			String userName = "root";
-			String password = "ai-lab";
+	private static DataSourcePostgreSQL instance = null;
+	private Connection connection;
+	private static int MAX_TENTATIVI = 10;
+	private static int MAX_CHIAMATE = 500;
+	private int chiamate;
+	//private DataSourcePostgreSQL() {}
+	
+	private DataSourcePostgreSQL() throws PersistenceException {
+		this.connection = connect();
+		this.chiamate = 0;
+	}
 
-			Connection connection;
+	public static DataSourcePostgreSQL getInstance() throws PersistenceException {
+		if(instance == null) {
+			instance = new DataSourcePostgreSQL();
+		}
+		return instance;
+	}
+	
+	public Connection getConnection() throws PersistenceException {
+		this.chiamate++;
+		if (chiamate == MAX_CHIAMATE) {
 			try {
-			    Class.forName(driver);
-			    connection = DriverManager.getConnection(dbURI,userName, password);
+				this.connection.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			this.connection = connect();
+			this.chiamate = 0;
+		}
+		return this.connection;
+	}
+	
+	public void close() throws SQLException {
+		this.connection.close();
+		instance = null;
+	}
+	
+	private Connection connect() throws PersistenceException {
+		String driver = "com.mysql.jdbc.Driver";
+		String dbURI = "jdbc:mysql://localhost:3306/new_news_recommendation";
+		String userName = "root";
+		String password = "ai-lab";
+
+		Connection connection = null;
+		int i = 0;
+		while (connection == null && i < MAX_TENTATIVI) {
+			System.out.println("tentativo #" + i + " di connessione al DB");
+			i++;
+			try {
+				Class.forName(driver);
+				connection = DriverManager.getConnection(dbURI,userName, password);
 			} catch (ClassNotFoundException e) {
 				throw new PersistenceException(e.getMessage());
 			} catch(SQLException e) {
-				throw new PersistenceException(e.getMessage());
+				connection = null;
+				System.err.println(e.getMessage());
+				//throw new PersistenceException(e.getMessage());
 			}
 			catch(Exception e) {
 				throw new PersistenceException(e.getMessage());
 			}
-			return connection;
 		}
-	   
+		if (i == MAX_TENTATIVI) {
+			throw new PersistenceException("max tentativi raggiunto");
+		}
+		return connection;
+	}
+
 }

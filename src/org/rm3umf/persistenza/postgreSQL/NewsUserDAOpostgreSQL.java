@@ -32,16 +32,16 @@ public class NewsUserDAOpostgreSQL implements NewsUserDao {
 		catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
 		}
-		finally {
-			try {
-				if (statement != null) 
-					statement.close();
-				if (connection!= null)
-					connection.close();
-			} catch (SQLException e) {
-				throw new PersistenceException(e.getMessage());
-			}
-		}
+//		finally {
+//			try {
+//				if (statement != null) 
+//					statement.close();
+//				if (connection!= null)
+//					connection.close();
+//			} catch (SQLException e) {
+//				throw new PersistenceException(e.getMessage());
+//			}
+//		}
 	}
 	
 	public void deleteAll() throws PersistenceException {
@@ -56,16 +56,16 @@ public class NewsUserDAOpostgreSQL implements NewsUserDao {
 		catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
 		}
-		finally {
-			try {
-				if (statement != null) 
-					statement.close();
-				if (connection!= null)
-					connection.close();
-			} catch (SQLException e) {
-				throw new PersistenceException(e.getMessage());
-			}
-		}
+//		finally {
+//			try {
+//				if (statement != null) 
+//					statement.close();
+//				if (connection!= null)
+//					connection.close();
+//			} catch (SQLException e) {
+//				throw new PersistenceException(e.getMessage());
+//			}
+//		}
 	}
 
 

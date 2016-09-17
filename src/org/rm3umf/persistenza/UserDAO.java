@@ -39,7 +39,9 @@ public interface UserDAO {
 	
 	public List<UserModel> twittomender_tests1() throws PersistenceException;
 
-	List<UserModel> twittomender_tests7() throws PersistenceException;;
+	List<UserModel> twittomender_tests7() throws PersistenceException;
+	
+	public List<User> userRetriveReal() throws PersistenceException;
 	
 	
 

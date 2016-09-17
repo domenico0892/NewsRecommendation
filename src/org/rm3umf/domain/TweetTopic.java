@@ -1,15 +1,35 @@
 package org.rm3umf.domain;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
 public class TweetTopic extends Enrichment{
 	
 	public String uri;
 	public Double relevance;
-	public Date creation_time;
+	public Timestamp creation_time;
 	public User user;
 	public Message tweet;
+	public String topic;
 	
+	
+	
+	public String getTopic() {
+		return topic;
+	}
+
+	public void setTopic(String topic) {
+		this.topic = topic;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
 	public TweetTopic() {
 		
 	}
@@ -46,11 +66,11 @@ public class TweetTopic extends Enrichment{
 		this.relevance = relevance;
 	}
 
-	public Date getCreation_time() {
+	public Timestamp getCreation_time() {
 		return creation_time;
 	}
 
-	public void setCreation_time(Date publish_date) {
+	public void setCreation_time(Timestamp publish_date) {
 		this.creation_time = publish_date;
 	}
 

@@ -58,7 +58,7 @@ public class NewsDAOpostgreSQL implements NewsDAO{
 		}catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
 		}
-		finally {
+	/*	finally {
 			try {
 				if (result != null)
 					result.close();
@@ -69,7 +69,7 @@ public class NewsDAOpostgreSQL implements NewsDAO{
 			} catch (SQLException e) {
 				throw new PersistenceException(e.getMessage());
 			}
-		}
+		}*/
 		return n;
 	}
 
@@ -113,7 +113,7 @@ public class NewsDAOpostgreSQL implements NewsDAO{
 		}catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
 		}
-		finally {
+		/*finally {
 			try {
 				if (result != null)
 					result.close();
@@ -124,7 +124,7 @@ public class NewsDAOpostgreSQL implements NewsDAO{
 			} catch (SQLException e) {
 				throw new PersistenceException(e.getMessage());
 			}
-		}
+		}*/
 		return listNews;
 	}
 
@@ -164,7 +164,7 @@ public class NewsDAOpostgreSQL implements NewsDAO{
 			logger.error("errore durante il recupero degli url");
 			throw new PersistenceException(e.getMessage());
 		}
-		finally {
+		/*finally {
 			try {
 				if (result != null)
 					result.close();
@@ -175,7 +175,7 @@ public class NewsDAOpostgreSQL implements NewsDAO{
 			} catch (SQLException e) {
 				throw new PersistenceException(e.getMessage());
 			}
-		}
+		}*/
 		return newsForPeriod;
 	}
 
@@ -193,7 +193,7 @@ public class NewsDAOpostgreSQL implements NewsDAO{
 		catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
 		}
-		finally {
+		/*finally {
 			try {
 				if (statement != null) 
 					statement.close();
@@ -202,7 +202,7 @@ public class NewsDAOpostgreSQL implements NewsDAO{
 			} catch (SQLException e) {
 				throw new PersistenceException(e.getMessage());
 			}
-		}
+		}*/
 	}
 
 	public void deleteAll() throws PersistenceException {
@@ -217,7 +217,7 @@ public class NewsDAOpostgreSQL implements NewsDAO{
 		catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
 		}
-		finally {
+	/*	finally {
 			try {
 				if (statement != null) 
 					statement.close();
@@ -226,7 +226,7 @@ public class NewsDAOpostgreSQL implements NewsDAO{
 			} catch (SQLException e) {
 				throw new PersistenceException(e.getMessage());
 			}
-		}
+		}*/
 	}
 
 	@Override
@@ -262,7 +262,7 @@ public class NewsDAOpostgreSQL implements NewsDAO{
 		}catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
 		}
-		finally {
+		/*finally {
 			try {
 				if (result != null)
 					result.close();
@@ -273,7 +273,7 @@ public class NewsDAOpostgreSQL implements NewsDAO{
 			} catch (SQLException e) {
 				throw new PersistenceException(e.getMessage());
 			}
-		}
+		}*/
 		return n;
 	}
 
@@ -291,7 +291,7 @@ public class NewsDAOpostgreSQL implements NewsDAO{
 		catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
 		}
-		finally {
+		/*finally {
 			try {
 				if (statement != null) 
 					statement.close();
@@ -300,7 +300,7 @@ public class NewsDAOpostgreSQL implements NewsDAO{
 			} catch (SQLException e) {
 				throw new PersistenceException(e.getMessage());
 			}
-		}
+		}*/
 	}
 
 	public List<News> doRetrieveNewsByUser(long user) throws PersistenceException {
@@ -338,7 +338,7 @@ public class NewsDAOpostgreSQL implements NewsDAO{
 		}catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
 		}
-		finally {
+		/*finally {
 			try {
 				if (result != null)
 					result.close();
@@ -349,7 +349,7 @@ public class NewsDAOpostgreSQL implements NewsDAO{
 			} catch (SQLException e) {
 				throw new PersistenceException(e.getMessage());
 			}
-		}
+		}*/
 		return n;
 	}
 
@@ -390,7 +390,7 @@ public class NewsDAOpostgreSQL implements NewsDAO{
 		}catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
 		}
-		finally {
+		/*finally {
 			try {
 				if (result != null)
 					result.close();
@@ -401,7 +401,7 @@ public class NewsDAOpostgreSQL implements NewsDAO{
 			} catch (SQLException e) {
 				throw new PersistenceException(e.getMessage());
 			}
-		}
+		}*/
 		return n;
 	}
 
@@ -443,7 +443,7 @@ public class NewsDAOpostgreSQL implements NewsDAO{
 		}catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
 		}
-		finally {
+		/*finally {
 			try {
 				if (result != null)
 					result.close();
@@ -454,7 +454,7 @@ public class NewsDAOpostgreSQL implements NewsDAO{
 			} catch (SQLException e) {
 				throw new PersistenceException(e.getMessage());
 			}
-		}
+		}*/
 		return n;
 	}
 

@@ -29,9 +29,50 @@ import com.mysql.jdbc.jdbc2.optional.ConnectionWrapper;
 public class DatasetUmap implements DatasetAdapter{
 	
 	private String nameDataset;
+	private int chiamate = 0;
+	private int MAX_CHIAMATE;
+	private Connection connection = null;
 	
 	
 	private static final Logger log = Logger.getLogger(DatasetUmap.class); 
+	
+	public String getMaxDate() throws PersistenceException {
+		String maxDate=null;
+		Connection connection = null;
+		PreparedStatement statement = null;
+		ResultSet result = null;
+		try {
+			try {
+				connection = getConnection();
+			} catch (DatasetException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			String retrieve = "SELECT max(creationTime) from tweets_sample";
+			statement = connection.prepareStatement(retrieve);
+			result = statement.executeQuery();
+			if(result.next()){
+			maxDate =result.getDate(1).toString();
+			}
+		}
+		catch (SQLException e) {
+			throw new PersistenceException(e.getMessage());
+			
+		}
+		/*finally {
+			try {
+				if (result != null)
+					result.close();
+				if (statement != null) 
+					statement.close();
+				if (connection!= null)
+					connection.close();
+			} catch (SQLException e) {
+				throw new PersistenceException(e.getMessage());
+			}
+		}*/
+		return maxDate;
+	}
 	
 	public News doRetrieveNewsByUrl(String url) throws PersistenceException {
 		//DataSourcePostgreSQL ds = DataSourcePostgreSQL.getInstance();
@@ -70,7 +111,7 @@ public class DatasetUmap implements DatasetAdapter{
 		}catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
 		}
-		finally {
+		/*finally {
 			try {
 				if (result != null)
 					result.close();
@@ -81,7 +122,7 @@ public class DatasetUmap implements DatasetAdapter{
 			} catch (SQLException e) {
 				throw new PersistenceException(e.getMessage());
 			}
-		}
+		}*/
 		return n;
 	}
 	
@@ -111,7 +152,7 @@ public class DatasetUmap implements DatasetAdapter{
 		catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
 		}
-		finally {
+		/*finally {
 			try {
 				if (result != null)
 					result.close();
@@ -122,7 +163,7 @@ public class DatasetUmap implements DatasetAdapter{
 			} catch (SQLException e) {
 				throw new PersistenceException(e.getMessage());
 			}
-		}
+		}*/
 		return json_str;
 	}
 	
@@ -137,6 +178,9 @@ public class DatasetUmap implements DatasetAdapter{
 			String retrieve = "select distinct userId  from tweets_sample";
 			statement = connection.prepareStatement(retrieve);
 			result = statement.executeQuery();
+			result.last();
+			MAX_CHIAMATE = result.getRow();
+			result.beforeFirst();
 			while(result.next()){
 				int userId=result.getInt(1);
 				//effettuo un'altra query per recuperare gli username
@@ -157,7 +201,7 @@ public class DatasetUmap implements DatasetAdapter{
 		}catch (DatasetException e) {
 			throw new DatasetException(e.getMessage());
 		}
-		finally {
+		/*finally {
 			try {
 				if (result != null)
 					result.close();
@@ -168,7 +212,7 @@ public class DatasetUmap implements DatasetAdapter{
 			} catch (SQLException e) {
 				throw new DatasetException(e.getMessage());
 			}
-		}
+		}*/
 		return listaUser;
 	}
 
@@ -201,7 +245,7 @@ public class DatasetUmap implements DatasetAdapter{
 			throw new DatasetException(e.getMessage());
 		}
 		
-		finally {
+		/*finally {
 			try {
 				if (result != null)
 					result.close();
@@ -212,7 +256,7 @@ public class DatasetUmap implements DatasetAdapter{
 			} catch (SQLException e) {
 				throw new DatasetException(e.getMessage());
 			}
-		}
+		}*/
 		return listaMessages;
 	}
 
@@ -238,7 +282,7 @@ public class DatasetUmap implements DatasetAdapter{
 			log.error("errore durante il recupero degli username dell'utente "+userid);
 			throw new DatasetException(e.getMessage());
 		}
-		finally {
+		/*finally {
 			try {
 				if (result != null)
 					result.close();
@@ -249,7 +293,7 @@ public class DatasetUmap implements DatasetAdapter{
 			} catch (SQLException e) {
 				throw new DatasetException(e.getMessage());
 			}
-		}
+		}*/
 		return listaUsername;
 	}
 
@@ -261,15 +305,27 @@ public class DatasetUmap implements DatasetAdapter{
 	 * @throws DatasetException
 	 */
 	private Connection getConnection() throws DatasetException {
+		
+//		this.chiamate++;
+//		if (this.chiamate == MAX_CHIAMATE || this.connection == null) {
+//			if (this.connection != null) {
+//				try {
+//					this.connection.close();
+//				} catch (SQLException e) {
+//					// TODO Auto-generated catch block
+//					e.printStackTrace();
+//				}
+//			}
+		if (connection == null) {
 		String driver = "com.mysql.jdbc.Driver";
 		String dbURI = "jdbc:mysql://localhost/twitter";
 		String userName = "root";
 		String password = "ai-lab";
 
-		Connection connection;
 		try {
 			Class.forName(driver);
 			connection = DriverManager.getConnection(dbURI,userName, password);
+			System.err.println("Ottenuta nuova connessione");
 		} catch (ClassNotFoundException e) {
 			throw new DatasetException(e.getMessage());
 		} catch(SQLException e) {
@@ -278,6 +334,7 @@ public class DatasetUmap implements DatasetAdapter{
 		catch(Exception e) {
 			throw new DatasetException(e.getMessage());
 		}
+		}		
 		return connection;
 	}
 }

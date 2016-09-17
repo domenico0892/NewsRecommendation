@@ -38,16 +38,16 @@ public class TruthSignalDAOpostgreSQL implements TruthSignalDAO{
 			e.printStackTrace();
 			throw new PersistenceException(e.getMessage());
 		}
-		finally {
-			try {
-				if (statement != null) 
-					statement.close();
-				if (connection!= null)
-					connection.close();
-			} catch (SQLException e) {
-				throw new PersistenceException(e.getMessage());
-			}
-		}
+//		finally {
+//			try {
+//				if (statement != null) 
+//					statement.close();
+//				if (connection!= null)
+//					connection.close();
+//			} catch (SQLException e) {
+//				throw new PersistenceException(e.getMessage());
+//			}
+//		}
 	}
 
 	@Override
@@ -64,16 +64,16 @@ public class TruthSignalDAOpostgreSQL implements TruthSignalDAO{
 		catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
 		}
-		finally {
-			try {
-				if (statement != null) 
-					statement.close();
-				if (connection!= null)
-					connection.close();
-			} catch (SQLException e) {
-				throw new PersistenceException(e.getMessage());
-			}
-		}
+//		finally {
+//			try {
+//				if (statement != null) 
+//					statement.close();
+//				if (connection!= null)
+//					connection.close();
+//			} catch (SQLException e) {
+//				throw new PersistenceException(e.getMessage());
+//			}
+//		}
 	}
 
 	@Override
@@ -94,18 +94,18 @@ public class TruthSignalDAOpostgreSQL implements TruthSignalDAO{
 		}catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
 		}
-		finally {
-			try {
-				if (result != null)
-					result.close();
-				if (statement != null) 
-					statement.close();
-				if (connection!= null)
-					connection.close();
-			} catch (SQLException e) {
-				throw new PersistenceException(e.getMessage());
-			}
-		}
+//		finally {
+//			try {
+//				if (result != null)
+//					result.close();
+//				if (statement != null) 
+//					statement.close();
+//				if (connection!= null)
+//					connection.close();
+//			} catch (SQLException e) {
+//				throw new PersistenceException(e.getMessage());
+//			}
+//		}
 	}
 
 	@Override
@@ -145,18 +145,18 @@ public class TruthSignalDAOpostgreSQL implements TruthSignalDAO{
 		catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
 		}
-		finally {
-			try {
-				if (result != null)
-					result.close();
-				if (statement != null) 
-					statement.close();
-				if (connection!= null)
-					connection.close();
-			} catch (SQLException e) {
-				throw new PersistenceException(e.getMessage());
-			}
-		}
+//		finally {
+//			try {
+//				if (result != null)
+//					result.close();
+//				if (statement != null) 
+//					statement.close();
+//				if (connection!= null)
+//					connection.close();
+//			} catch (SQLException e) {
+//				throw new PersistenceException(e.getMessage());
+//			}
+//		}
 		return signalUser;
 	}
 
@@ -194,18 +194,18 @@ public class TruthSignalDAOpostgreSQL implements TruthSignalDAO{
 		catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
 		}
-		finally {
-			try {
-				if (result != null)
-					result.close();
-				if (statement != null) 
-					statement.close();
-				if (connection!= null)
-					connection.close();
-			} catch (SQLException e) {
-				throw new PersistenceException(e.getMessage());
-			}
-		}
+//		finally {
+//			try {
+//				if (result != null)
+//					result.close();
+//				if (statement != null) 
+//					statement.close();
+//				if (connection!= null)
+//					connection.close();
+//			} catch (SQLException e) {
+//				throw new PersistenceException(e.getMessage());
+//			}
+//		}
 		return signal;
 	}
 
@@ -244,18 +244,18 @@ public class TruthSignalDAOpostgreSQL implements TruthSignalDAO{
 		catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
 		}
-		finally {
-			try {
-				if (result != null)
-					result.close();
-				if (statement != null) 
-					statement.close();
-				if (connection!= null)
-					connection.close();
-			} catch (SQLException e) {
-				throw new PersistenceException(e.getMessage());
-			}
-		}
+//		finally {
+//			try {
+//				if (result != null)
+//					result.close();
+//				if (statement != null) 
+//					statement.close();
+//				if (connection!= null)
+//					connection.close();
+//			} catch (SQLException e) {
+//				throw new PersistenceException(e.getMessage());
+//			}
+//		}
 		return signalUser;
 	}
 
@@ -273,16 +273,16 @@ public class TruthSignalDAOpostgreSQL implements TruthSignalDAO{
 		catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
 		}
-		finally {
-			try {
-				if (statement != null) 
-					statement.close();
-				if (connection!= null)
-					connection.close();
-			} catch (SQLException e) {
-				throw new PersistenceException(e.getMessage());
-			}
-		}
+//		finally {
+//			try {
+//				if (statement != null) 
+//					statement.close();
+//				if (connection!= null)
+//					connection.close();
+//			} catch (SQLException e) {
+//				throw new PersistenceException(e.getMessage());
+//			}
+//		}
 	}
 	
 	

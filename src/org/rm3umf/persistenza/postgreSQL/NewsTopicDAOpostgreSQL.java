@@ -30,6 +30,25 @@ import org.rm3umf.persistenza.PersistenceException;
 public class NewsTopicDAOpostgreSQL implements NewsTopicDAO{
 
 	private Logger logger = Logger.getLogger(NewsTopicDAOpostgreSQL.class);
+	
+	public void saveNewsTopic (NewsTopic n) throws PersistenceException {
+		String query = "INSERT INTO semanticsNewsTopic VALUES (?, ?, ?, ?, ?)";
+		DataSourcePostgreSQL ds = DataSourcePostgreSQL.getInstance();
+		try {
+			Connection connection = ds.getConnection();
+			PreparedStatement statement = connection.prepareStatement(query);
+			statement.setLong(1, Long.parseLong(n.getNews().getId()));
+			statement.setString(2, n.getTopic());
+			statement.setString(3, n.getUri());
+			statement.setDouble(4, n.getRelevance());
+			statement.setTimestamp(5, n.getPublish_date());
+			statement.execute();
+		}
+		catch (SQLException e) {
+			logger.error("errore nell'inserimento della news topic");
+		}
+		
+	}
 
 
 	@Override
@@ -65,7 +84,7 @@ public class NewsTopicDAOpostgreSQL implements NewsTopicDAO{
 		}catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
 		}
-		finally {
+		/*finally {
 			try {
 				if (result != null)
 					result.close();
@@ -76,7 +95,7 @@ public class NewsTopicDAOpostgreSQL implements NewsTopicDAO{
 			} catch (SQLException e) {
 				throw new PersistenceException(e.getMessage());
 			}
-		}
+		}*/
 		return lista;
 	}
 
@@ -111,7 +130,7 @@ public class NewsTopicDAOpostgreSQL implements NewsTopicDAO{
 		}catch (SQLException e1) {
 			throw new PersistenceException(e1.getMessage());
 		}
-		finally {
+		/*finally {
 			try {
 				if (result != null)
 					result.close();
@@ -122,7 +141,7 @@ public class NewsTopicDAOpostgreSQL implements NewsTopicDAO{
 			} catch (SQLException e1) {
 				throw new PersistenceException(e1.getMessage());
 			}
-		}
+		}*/
 		return ne;
 	}
 
@@ -155,7 +174,7 @@ public class NewsTopicDAOpostgreSQL implements NewsTopicDAO{
 		}catch (SQLException e1) {
 			throw new PersistenceException(e1.getMessage());
 		}
-		finally {
+	/*	finally {
 			try {
 				if (result != null)
 					result.close();
@@ -166,7 +185,7 @@ public class NewsTopicDAOpostgreSQL implements NewsTopicDAO{
 			} catch (SQLException e1) {
 				throw new PersistenceException(e1.getMessage());
 			}
-		}
+		}*/
 		return listnewsentity;
 	}
 
@@ -186,7 +205,7 @@ public class NewsTopicDAOpostgreSQL implements NewsTopicDAO{
 		catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
 		}
-		finally {
+		/*finally {
 			try {
 				if (statement != null) 
 					statement.close();
@@ -195,7 +214,7 @@ public class NewsTopicDAOpostgreSQL implements NewsTopicDAO{
 			} catch (SQLException e) {
 				throw new PersistenceException(e.getMessage());
 			}
-		}
+		}*/
 	}
 
 	@Override
@@ -222,7 +241,7 @@ public class NewsTopicDAOpostgreSQL implements NewsTopicDAO{
 		}catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
 		}
-		finally {
+		/*finally {
 			try {
 				if (result != null)
 					result.close();
@@ -233,7 +252,7 @@ public class NewsTopicDAOpostgreSQL implements NewsTopicDAO{
 			} catch (SQLException e) {
 				throw new PersistenceException(e.getMessage());
 			}
-		}
+		}*/
 		return lista;
 	}
 
@@ -268,7 +287,7 @@ public class NewsTopicDAOpostgreSQL implements NewsTopicDAO{
 		}catch (SQLException e1) {
 			throw new PersistenceException(e1.getMessage());
 		}
-		finally {
+		/*finally {
 			try {
 				if (result != null)
 					result.close();
@@ -279,7 +298,7 @@ public class NewsTopicDAOpostgreSQL implements NewsTopicDAO{
 			} catch (SQLException e1) {
 				throw new PersistenceException(e1.getMessage());
 			}
-		}
+		}*/
 		return mappa;
 	}
 
@@ -316,7 +335,7 @@ public class NewsTopicDAOpostgreSQL implements NewsTopicDAO{
 		catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
 		}
-		finally {
+		/*finally {
 			try {
 				if (result != null)
 					result.close();
@@ -327,7 +346,7 @@ public class NewsTopicDAOpostgreSQL implements NewsTopicDAO{
 			} catch (SQLException e) {
 				throw new PersistenceException(e.getMessage());
 			}
-		}
+		}*/
 		return listaTweet;
 	}
 }

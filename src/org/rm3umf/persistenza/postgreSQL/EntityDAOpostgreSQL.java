@@ -77,7 +77,7 @@ public class EntityDAOpostgreSQL implements EntityDAO{
 		}catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
 		}
-		finally {
+		/*finally {
 			try {
 				if (result != null)
 					result.close();
@@ -88,7 +88,7 @@ public class EntityDAOpostgreSQL implements EntityDAO{
 			} catch (SQLException e) {
 				throw new PersistenceException(e.getMessage());
 			}
-		}
+		}*/
 		return lista;
 	}
 
@@ -132,7 +132,7 @@ public class EntityDAOpostgreSQL implements EntityDAO{
 		}catch (SQLException e1) {
 			throw new PersistenceException(e1.getMessage());
 		}
-		finally {
+		/*finally {
 			try {
 				if (result != null)
 					result.close();
@@ -143,7 +143,7 @@ public class EntityDAOpostgreSQL implements EntityDAO{
 			} catch (SQLException e1) {
 				throw new PersistenceException(e1.getMessage());
 			}
-		}
+		}*/
 		return lista;
 	}
 
@@ -185,7 +185,7 @@ public class EntityDAOpostgreSQL implements EntityDAO{
 		}catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
 		}
-		finally {
+		/*finally {
 			try {
 				if (result != null)
 					result.close();
@@ -196,7 +196,7 @@ public class EntityDAOpostgreSQL implements EntityDAO{
 			} catch (SQLException e) {
 				throw new PersistenceException(e.getMessage());
 			}
-		}
+		}*/
 		return lista;
 	}
 
@@ -248,7 +248,7 @@ public class EntityDAOpostgreSQL implements EntityDAO{
 		}catch (SQLException e1) {
 			throw new PersistenceException(e1.getMessage());
 		}
-		finally {
+		/*finally {
 			try {
 				if (result != null)
 					result.close();
@@ -259,7 +259,7 @@ public class EntityDAOpostgreSQL implements EntityDAO{
 			} catch (SQLException e1) {
 				throw new PersistenceException(e1.getMessage());
 			}
-		}
+		}*/
 		return mappa;
 	}
 	
@@ -294,7 +294,7 @@ public class EntityDAOpostgreSQL implements EntityDAO{
 		catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
 		}
-		finally {
+		/*finally {
 			try {
 				if (result != null)
 					result.close();
@@ -305,7 +305,7 @@ public class EntityDAOpostgreSQL implements EntityDAO{
 			} catch (SQLException e) {
 				throw new PersistenceException(e.getMessage());
 			}
-		}
+		}*/
 		return listaTweet;
 	}
 }

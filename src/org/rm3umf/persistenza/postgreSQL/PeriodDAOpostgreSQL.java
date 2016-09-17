@@ -42,18 +42,18 @@ public class PeriodDAOpostgreSQL implements PeriodDAO{
 			throw new PersistenceException(e.getMessage());
 			
 		}
-		finally {
-			try {
-				if (result != null)
-					result.close();
-				if (statement != null) 
-					statement.close();
-				if (connection!= null)
-					connection.close();
-			} catch (SQLException e) {
-				throw new PersistenceException(e.getMessage());
-			}
-		}
+//		finally {
+//			try {
+//				if (result != null)
+//					result.close();
+//				if (statement != null) 
+//					statement.close();
+//				if (connection!= null)
+//					connection.close();
+//			} catch (SQLException e) {
+//				throw new PersistenceException(e.getMessage());
+//			}
+//		}
 		return maxDate;
 	}
 
@@ -76,18 +76,18 @@ public class PeriodDAOpostgreSQL implements PeriodDAO{
 		catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());	
 		}
-		finally {
-			try {
-				if (result != null)
-					result.close();
-				if (statement != null) 
-					statement.close();
-				if (connection!= null)
-					connection.close();
-			} catch (SQLException e) {
-				throw new PersistenceException(e.getMessage());
-			}
-		}
+//		finally {
+//			try {
+//				if (result != null)
+//					result.close();
+//				if (statement != null) 
+//					statement.close();
+//				if (connection!= null)
+//					connection.close();
+//			} catch (SQLException e) {
+//				throw new PersistenceException(e.getMessage());
+//			}
+//		}
 		return minDate;
 	}
 
@@ -108,16 +108,16 @@ public class PeriodDAOpostgreSQL implements PeriodDAO{
 			logger.error("errore durante il salvataggio del periodo :"+period);
 			throw new PersistenceException(e.getMessage());
 		}
-		finally {
-			try {
-				if (statement != null) 
-					statement.close();
-				if (connection!= null)
-					connection.close();
-			} catch (SQLException e) {
-				throw new PersistenceException(e.getMessage());
-			}
-		}
+//		finally {
+//			try {
+//				if (statement != null) 
+//					statement.close();
+//				if (connection!= null)
+//					connection.close();
+//			} catch (SQLException e) {
+//				throw new PersistenceException(e.getMessage());
+//			}
+//		}
 		logger.info("periodo salvato:"+period);
 		
 	}
@@ -134,7 +134,7 @@ public class PeriodDAOpostgreSQL implements PeriodDAO{
 		catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
 		}
-		finally {
+		/*finally {
 			try {
 				if (statement != null) 
 					statement.close();
@@ -143,7 +143,7 @@ public class PeriodDAOpostgreSQL implements PeriodDAO{
 			} catch (SQLException e) {
 				throw new PersistenceException(e.getMessage());
 			}
-		}
+		}*/
 	}
 	
 	public List<Period> doRetriveAll() throws PersistenceException{
@@ -169,18 +169,18 @@ public class PeriodDAOpostgreSQL implements PeriodDAO{
 		catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
 		}
-		finally {
-			try {
-				if (result != null)
-					result.close();
-				if (statement != null) 
-					statement.close();
-				if (connection!= null)
-					connection.close();
-			} catch (SQLException e) {
-				throw new PersistenceException(e.getMessage());
-			}
-		}
+//		finally {
+//			try {
+//				if (result != null)
+//					result.close();
+//				if (statement != null) 
+//					statement.close();
+//				if (connection!= null)
+//					connection.close();
+//			} catch (SQLException e) {
+//				throw new PersistenceException(e.getMessage());
+//			}
+//		}
 		return listaPeriodi;
 		
 	}
@@ -208,18 +208,18 @@ public class PeriodDAOpostgreSQL implements PeriodDAO{
 		catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
 		}
-		finally {
-			try {
-				if (result != null)
-					result.close();
-				if (statement != null) 
-					statement.close();
-				if (connection!= null)
-					connection.close();
-			} catch (SQLException e) {
-				throw new PersistenceException(e.getMessage());
-			}
-		}
+//		finally {
+//			try {
+//				if (result != null)
+//					result.close();
+//				if (statement != null) 
+//					statement.close();
+//				if (connection!= null)
+//					connection.close();
+//			} catch (SQLException e) {
+//				throw new PersistenceException(e.getMessage());
+//			}
+//		}
 		return period;
 	}
 
@@ -243,18 +243,18 @@ public class PeriodDAOpostgreSQL implements PeriodDAO{
 			catch (SQLException e) {
 				throw new PersistenceException(e.getMessage());
 			}
-			finally {
-				try {
-					if (result != null)
-						result.close();
-					if (statement != null) 
-						statement.close();
-					if (connection!= null)
-						connection.close();
-				} catch (SQLException e) {
-					throw new PersistenceException(e.getMessage());
-				}
-			}
+//			finally {
+//				try {
+//					if (result != null)
+//						result.close();
+//					if (statement != null) 
+//						statement.close();
+//					if (connection!= null)
+//						connection.close();
+//				} catch (SQLException e) {
+//					throw new PersistenceException(e.getMessage());
+//				}
+//			}
 			return dataFine;
 		}
 	
@@ -279,18 +279,18 @@ public class PeriodDAOpostgreSQL implements PeriodDAO{
 		catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
 		}
-		finally {
-			try {
-				if (result != null)
-					result.close();
-				if (statement != null) 
-					statement.close();
-				if (connection!= null)
-					connection.close();
-			} catch (SQLException e) {
-				throw new PersistenceException(e.getMessage());
-			}
-		}
+//		finally {
+//			try {
+//				if (result != null)
+//					result.close();
+//				if (statement != null) 
+//					statement.close();
+//				if (connection!= null)
+//					connection.close();
+//			} catch (SQLException e) {
+//				throw new PersistenceException(e.getMessage());
+//			}
+//		}
 		return dataInizio;
 	}
 	
@@ -315,18 +315,18 @@ public class PeriodDAOpostgreSQL implements PeriodDAO{
 			throw new PersistenceException(e.getMessage());
 			
 		}
-		finally {
-			try {
-				if (result != null)
-					result.close();
-				if (statement != null) 
-					statement.close();
-				if (connection!= null)
-					connection.close();
-			} catch (SQLException e) {
-				throw new PersistenceException(e.getMessage());
-			}
-		}
+//		finally {
+//			try {
+//				if (result != null)
+//					result.close();
+//				if (statement != null) 
+//					statement.close();
+//				if (connection!= null)
+//					connection.close();
+//			} catch (SQLException e) {
+//				throw new PersistenceException(e.getMessage());
+//			}
+//		}
 		return maxDate;
 	}
 
@@ -350,18 +350,18 @@ public class PeriodDAOpostgreSQL implements PeriodDAO{
 		catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());	
 		}
-		finally {
-			try {
-				if (result != null)
-					result.close();
-				if (statement != null) 
-					statement.close();
-				if (connection!= null)
-					connection.close();
-			} catch (SQLException e) {
-				throw new PersistenceException(e.getMessage());
-			}
-		}
+//		finally {
+//			try {
+//				if (result != null)
+//					result.close();
+//				if (statement != null) 
+//					statement.close();
+//				if (connection!= null)
+//					connection.close();
+//			} catch (SQLException e) {
+//				throw new PersistenceException(e.getMessage());
+//			}
+//		}
 		return minDate;
 	}
 

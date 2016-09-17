@@ -45,7 +45,7 @@ public class IdBrokerPg {
 			} catch(SQLException e) {
 			throw new PersistenceException(e.getMessage());
 		}
-		finally {
+		/*finally {
 			try {
 				if (statement != null) 
 					statement.close();
@@ -54,7 +54,7 @@ public class IdBrokerPg {
 			} catch (SQLException e) {
 				throw new PersistenceException(e.getMessage());
 			}
-		}
+		}*/
 		return newId;		
 	}
 }

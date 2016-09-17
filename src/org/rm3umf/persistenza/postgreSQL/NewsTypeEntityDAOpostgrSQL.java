@@ -76,7 +76,7 @@ public class NewsTypeEntityDAOpostgrSQL implements NewsTypeEntityDAO{
 		}catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
 		}
-		finally {
+		/*finally {
 			try {
 				if (result != null)
 					result.close();
@@ -87,7 +87,7 @@ public class NewsTypeEntityDAOpostgrSQL implements NewsTypeEntityDAO{
 			} catch (SQLException e) {
 				throw new PersistenceException(e.getMessage());
 			}
-		}
+		}*/
 		return lista;
 	}
 
@@ -125,18 +125,18 @@ public class NewsTypeEntityDAOpostgrSQL implements NewsTypeEntityDAO{
 		}catch (SQLException e1) {
 			throw new PersistenceException(e1.getMessage());
 		}
-		finally {
-			try {
-				if (result != null)
-					result.close();
-				if (statement != null) 
-					statement.close();
-				if (connection!= null)
-					connection.close();
-			} catch (SQLException e1) {
-				throw new PersistenceException(e1.getMessage());
-			}
+		/*finally {
+		try {
+			if (result != null)
+				result.close();
+			if (statement != null) 
+				statement.close();
+			if (connection!= null)
+				connection.close();
+		} catch (SQLException e) {
+			throw new PersistenceException(e.getMessage());
 		}
+	}*/
 		return ne;
 	}
 
@@ -174,18 +174,18 @@ public class NewsTypeEntityDAOpostgrSQL implements NewsTypeEntityDAO{
 		}catch (SQLException e1) {
 			throw new PersistenceException(e1.getMessage());
 		}
-		finally {
-			try {
-				if (result != null)
-					result.close();
-				if (statement != null) 
-					statement.close();
-				if (connection!= null)
-					connection.close();
-			} catch (SQLException e1) {
-				throw new PersistenceException(e1.getMessage());
-			}
-		}
+//		finally {
+//			try {
+//				if (result != null)
+//					result.close();
+//				if (statement != null) 
+//					statement.close();
+//				if (connection!= null)
+//					connection.close();
+//			} catch (SQLException e1) {
+//				throw new PersistenceException(e1.getMessage());
+//			}
+//		}
 		return listnewsentity;
 	}
 
@@ -205,16 +205,16 @@ public class NewsTypeEntityDAOpostgrSQL implements NewsTypeEntityDAO{
 		catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
 		}
-		finally {
-			try {
-				if (statement != null) 
-					statement.close();
-				if (connection!= null)
-					connection.close();
-			} catch (SQLException e) {
-				throw new PersistenceException(e.getMessage());
-			}
-		}
+//		finally {
+//			try {
+//				if (statement != null) 
+//					statement.close();
+//				if (connection!= null)
+//					connection.close();
+//			} catch (SQLException e) {
+//				throw new PersistenceException(e.getMessage());
+//			}
+//		}
 	}
 
 	@Override
@@ -245,18 +245,18 @@ public class NewsTypeEntityDAOpostgrSQL implements NewsTypeEntityDAO{
 		}catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
 		}
-		finally {
-			try {
-				if (result != null)
-					result.close();
-				if (statement != null) 
-					statement.close();
-				if (connection!= null)
-					connection.close();
-			} catch (SQLException e) {
-				throw new PersistenceException(e.getMessage());
-			}
-		}
+//		finally {
+//			try {
+//				if (result != null)
+//					result.close();
+//				if (statement != null) 
+//					statement.close();
+//				if (connection!= null)
+//					connection.close();
+//			} catch (SQLException e) {
+//				throw new PersistenceException(e.getMessage());
+//			}
+//		}
 		return lista;
 	}
 
@@ -291,18 +291,18 @@ public class NewsTypeEntityDAOpostgrSQL implements NewsTypeEntityDAO{
 		}catch (SQLException e1) {
 			throw new PersistenceException(e1.getMessage());
 		}
-		finally {
-			try {
-				if (result != null)
-					result.close();
-				if (statement != null) 
-					statement.close();
-				if (connection!= null)
-					connection.close();
-			} catch (SQLException e1) {
-				throw new PersistenceException(e1.getMessage());
-			}
-		}
+//		finally {
+//			try {
+//				if (result != null)
+//					result.close();
+//				if (statement != null) 
+//					statement.close();
+//				if (connection!= null)
+//					connection.close();
+//			} catch (SQLException e1) {
+//				throw new PersistenceException(e1.getMessage());
+//			}
+//		}
 		return mappa;
 	}
 
@@ -339,18 +339,18 @@ public class NewsTypeEntityDAOpostgrSQL implements NewsTypeEntityDAO{
 		catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
 		}
-		finally {
-			try {
-				if (result != null)
-					result.close();
-				if (statement != null) 
-					statement.close();
-				if (connection!= null)
-					connection.close();
-			} catch (SQLException e) {
-				throw new PersistenceException(e.getMessage());
-			}
-		}
+//		finally {
+//			try {
+//				if (result != null)
+//					result.close();
+//				if (statement != null) 
+//					statement.close();
+//				if (connection!= null)
+//					connection.close();
+//			} catch (SQLException e) {
+//				throw new PersistenceException(e.getMessage());
+//			}
+//		}
 		return listaTweet;
 	}
 

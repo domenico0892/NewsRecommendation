@@ -16,7 +16,7 @@ public class News {
 	private String url;
 	private String source;
 	private String category;
-	private  String title;
+	private String title;
 	private String description;
 	private String newscontent;
 	private String publish_date;

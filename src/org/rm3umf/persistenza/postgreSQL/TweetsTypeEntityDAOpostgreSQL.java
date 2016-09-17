@@ -30,6 +30,28 @@ public class TweetsTypeEntityDAOpostgreSQL implements TweetsEntityDAO{
 
 	private Logger logger = Logger.getLogger(TweetsTypeEntityDAOpostgreSQL.class);
 
+	public void saveTweetEntity (TweetEntity n) throws PersistenceException {
+		String query = "INSERT INTO semanticsTweetEntity VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+		DataSourcePostgreSQL ds = DataSourcePostgreSQL.getInstance();
+		try {
+			Connection connection = ds.getConnection();
+			PreparedStatement statement = connection.prepareStatement(query);
+			statement.setLong(1, n.getTweet().getUser().getIduser());
+			statement.setLong(2, Long.parseLong(n.getTweet().getIdMessage()));
+			statement.setString(3, n.getType());
+			statement.setString(4, n.getTypeURI());
+			statement.setString(5, n.getName());
+			statement.setString(6, n.getUri());
+			statement.setDouble(7, n.getRelevance());
+			statement.setTimestamp(8, n.getCreationTime());			
+			statement.execute();
+		}
+		catch (SQLException e) {
+			logger.error("errore nell'inserimento della tweet entity");
+		}
+		
+	}
+	
 	@Override
 	public List<TweetEntity> getTweetEntityFromTweetId(String tweetId, String type) throws PersistenceException {
 		List<TweetEntity> lista = new LinkedList<TweetEntity>();
@@ -62,7 +84,7 @@ public class TweetsTypeEntityDAOpostgreSQL implements TweetsEntityDAO{
 					ne.setUri(result.getString(6));
 					ne.setRelevance(result.getDouble(7));
 					try {
-						ne.setCreationTime(result.getDate(8));
+						ne.setCreationTime(result.getTimestamp(8));
 					} catch (SQLException ex) {
 						ne.setCreationTime(null);
 					}
@@ -73,18 +95,18 @@ public class TweetsTypeEntityDAOpostgreSQL implements TweetsEntityDAO{
 		}catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
 		}
-		finally {
-			try {
-				if (result != null)
-					result.close();
-				if (statement != null) 
-					statement.close();
-				if (connection!= null)
-					connection.close();
-			} catch (SQLException e) {
-				throw new PersistenceException(e.getMessage());
-			}
-		}
+//		finally {
+//			try {
+//				if (result != null)
+//					result.close();
+//				if (statement != null) 
+//					statement.close();
+//				if (connection!= null)
+//					connection.close();
+//			} catch (SQLException e) {
+//				throw new PersistenceException(e.getMessage());
+//			}
+//		}
 		return lista;
 	}
 
@@ -119,7 +141,7 @@ TweetEntity ne = null;
 					ne.setUri(result.getString(6));
 					ne.setRelevance(result.getDouble(7));
 					try {
-						ne.setCreationTime(result.getDate(8));
+						ne.setCreationTime(result.getTimestamp(8));
 					} catch (SQLException ex) {
 						ne.setCreationTime(null);
 					}
@@ -135,18 +157,18 @@ TweetEntity ne = null;
 		}catch (SQLException e1) {
 			throw new PersistenceException(e1.getMessage());
 		}
-		finally {
-			try {
-				if (result != null)
-					result.close();
-				if (statement != null) 
-					statement.close();
-				if (connection!= null)
-					connection.close();
-			} catch (SQLException e1) {
-				throw new PersistenceException(e1.getMessage());
-			}
-		}
+//		finally {
+//			try {
+//				if (result != null)
+//					result.close();
+//				if (statement != null) 
+//					statement.close();
+//				if (connection!= null)
+//					connection.close();
+//			} catch (SQLException e1) {
+//				throw new PersistenceException(e1.getMessage());
+//			}
+//		}
 		return ne;
 	}
 
@@ -180,18 +202,18 @@ TweetEntity ne = null;
 		}catch (SQLException e1) {
 			throw new PersistenceException(e1.getMessage());
 		}
-		finally {
-			try {
-				if (result != null)
-					result.close();
-				if (statement != null) 
-					statement.close();
-				if (connection!= null)
-					connection.close();
-			} catch (SQLException e1) {
-				throw new PersistenceException(e1.getMessage());
-			}
-		}
+//		finally {
+//			try {
+//				if (result != null)
+//					result.close();
+//				if (statement != null) 
+//					statement.close();
+//				if (connection!= null)
+//					connection.close();
+//			} catch (SQLException e1) {
+//				throw new PersistenceException(e1.getMessage());
+//			}
+//		}
 		return listnewsentity;
 	}
 
@@ -211,16 +233,16 @@ TweetEntity ne = null;
 		catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
 		}
-		finally {
-			try {
-				if (statement != null) 
-					statement.close();
-				if (connection!= null)
-					connection.close();
-			} catch (SQLException e) {
-				throw new PersistenceException(e.getMessage());
-			}
-		}
+//		finally {
+//			try {
+//				if (statement != null) 
+//					statement.close();
+//				if (connection!= null)
+//					connection.close();
+//			} catch (SQLException e) {
+//				throw new PersistenceException(e.getMessage());
+//			}
+//		}
 	}
 
 	@Override
@@ -245,18 +267,18 @@ TweetEntity ne = null;
 		}catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
 		}
-		finally {
-			try {
-				if (result != null)
-					result.close();
-				if (statement != null) 
-					statement.close();
-				if (connection!= null)
-					connection.close();
-			} catch (SQLException e) {
-				throw new PersistenceException(e.getMessage());
-			}
-		}
+//		finally {
+//			try {
+//				if (result != null)
+//					result.close();
+//				if (statement != null) 
+//					statement.close();
+//				if (connection!= null)
+//					connection.close();
+//			} catch (SQLException e) {
+//				throw new PersistenceException(e.getMessage());
+//			}
+//		}
 		return lista;
 	}
 
@@ -291,18 +313,18 @@ TweetEntity ne = null;
 		}catch (SQLException e1) {
 			throw new PersistenceException(e1.getMessage());
 		}
-		finally {
-			try {
-				if (result != null)
-					result.close();
-				if (statement != null) 
-					statement.close();
-				if (connection!= null)
-					connection.close();
-			} catch (SQLException e1) {
-				throw new PersistenceException(e1.getMessage());
-			}
-		}
+//		finally {
+//			try {
+//				if (result != null)
+//					result.close();
+//				if (statement != null) 
+//					statement.close();
+//				if (connection!= null)
+//					connection.close();
+//			} catch (SQLException e1) {
+//				throw new PersistenceException(e1.getMessage());
+//			}
+//		}
 		return mappa;
 	}	
 	
@@ -336,18 +358,18 @@ TweetEntity ne = null;
 		catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
 		}
-		finally {
-			try {
-				if (result != null)
-					result.close();
-				if (statement != null) 
-					statement.close();
-				if (connection!= null)
-					connection.close();
-			} catch (SQLException e) {
-				throw new PersistenceException(e.getMessage());
-			}
-		}
+//		finally {
+//			try {
+//				if (result != null)
+//					result.close();
+//				if (statement != null) 
+//					statement.close();
+//				if (connection!= null)
+//					connection.close();
+//			} catch (SQLException e) {
+//				throw new PersistenceException(e.getMessage());
+//			}
+//		}
 		return listaTweet;
 	}
 }

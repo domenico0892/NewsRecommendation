@@ -1,14 +1,23 @@
 package org.rm3umf.domain;
 
-import java.util.Date;
+import java.sql.Timestamp;
 
 public class NewsTopic extends Enrichment{
 	
 	public News news ;
 	public String uri;
 	public Double relevance;
-	public Date publish_date;
+	public Timestamp publish_Timestamp;
+	public String topic;
 	
+	public String getTopic() {
+		return topic;
+	}
+
+	public void setTopic(String topic) {
+		this.topic = topic;
+	}
+
 	public NewsTopic() {
 		
 	}
@@ -37,17 +46,17 @@ public class NewsTopic extends Enrichment{
 		this.relevance = relavance;
 	}
 
-	public Date getPublish_date() {
-		return publish_date;
+	public Timestamp getPublish_date() {
+		return publish_Timestamp;
 	}
 
-	public void setPublish_date(Date publish_date) {
-		this.publish_date = publish_date;
+	public void setPublish_date(Timestamp publish_Timestamp) {
+		this.publish_Timestamp = publish_Timestamp;
 	}
 
 	@Override
 	public String toString() {
 		return "NewsTopic [news=" + news + ", uri=" + uri + ", relevance="
-				+ relevance + ", publish_date=" + publish_date + "]";
+				+ relevance + ", publish_Timestamp=" + publish_Timestamp + "]";
 	}	
 }

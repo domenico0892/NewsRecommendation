@@ -143,7 +143,7 @@ public class FactoryDBpostgreSQL implements FactoryDB{
 		catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
 		}
-		finally {
+		/*finally {
 			try {
 				if (statement != null) 
 					statement.close();
@@ -152,7 +152,7 @@ public class FactoryDBpostgreSQL implements FactoryDB{
 			} catch (SQLException e) {
 				throw new PersistenceException(e.getMessage());
 			}
-		}
+		}*/
     	
     	
     }

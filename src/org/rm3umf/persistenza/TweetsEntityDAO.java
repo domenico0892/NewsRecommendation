@@ -32,4 +32,6 @@ public interface TweetsEntityDAO {
 			int periodid) throws PersistenceException; 
 	
 	public List<Message> doRetrieveByUserIdAndDate(User user,Period period) throws PersistenceException;
+	
+	public void saveTweetEntity (TweetEntity n) throws PersistenceException;
 }

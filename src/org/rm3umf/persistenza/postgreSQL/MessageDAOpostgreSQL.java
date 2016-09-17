@@ -56,7 +56,7 @@ public class MessageDAOpostgreSQL implements MessageDAO{
 			logger.error("errore durante il salvantaggio del messaggio "+message.getIdMessage());
 			throw new PersistenceException(e.getMessage());
 		}
-		finally {
+		/*finally {
 			try {
 				if (statement != null) 
 					statement.close();
@@ -65,7 +65,7 @@ public class MessageDAOpostgreSQL implements MessageDAO{
 			} catch (SQLException e) {
 				throw new PersistenceException(e.getMessage());
 			}
-		}
+		}*/
 	}
 
 	public void delete() throws PersistenceException {
@@ -80,7 +80,7 @@ public class MessageDAOpostgreSQL implements MessageDAO{
 		catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
 		}
-		finally {
+		/*finally {
 			try {
 				if (statement != null) 
 					statement.close();
@@ -89,7 +89,7 @@ public class MessageDAOpostgreSQL implements MessageDAO{
 			} catch (SQLException e) {
 				throw new PersistenceException(e.getMessage());
 			}
-		}
+		}*/
 	}
 
 	public List<Message> doRetrieveByUserId(String userId) throws PersistenceException {
@@ -173,7 +173,7 @@ public class MessageDAOpostgreSQL implements MessageDAO{
 		catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
 		}
-		finally {
+		/*finally {
 			try {
 				if (result != null)
 					result.close();
@@ -184,7 +184,7 @@ public class MessageDAOpostgreSQL implements MessageDAO{
 			} catch (SQLException e) {
 				throw new PersistenceException(e.getMessage());
 			}
-		}
+		}*/
 		return listaTweet;
 	}
 
@@ -217,7 +217,7 @@ public class MessageDAOpostgreSQL implements MessageDAO{
 			logger.error("errore mentre sto recuperando i messaggi dell'utente"+u.getIduser());
 			throw new PersistenceException(e.getMessage());
 		}
-		finally {
+		/*finally {
 			try {
 				if (result != null)
 					result.close();
@@ -228,7 +228,7 @@ public class MessageDAOpostgreSQL implements MessageDAO{
 			} catch (SQLException e) {
 				throw new PersistenceException(e.getMessage());
 			}
-		}
+		}*/
 		return listaTweet;
 	}
 	
@@ -253,7 +253,7 @@ public class MessageDAOpostgreSQL implements MessageDAO{
 		catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
 		}
-		finally {
+		/*finally {
 			try {
 				if (result != null)
 					result.close();
@@ -264,7 +264,7 @@ public class MessageDAOpostgreSQL implements MessageDAO{
 			} catch (SQLException e) {
 				throw new PersistenceException(e.getMessage());
 			}
-		}
+		}*/
 		return json_str;
 	}
 }

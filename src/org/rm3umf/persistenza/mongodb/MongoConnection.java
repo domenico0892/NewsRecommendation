@@ -12,17 +12,23 @@ import com.mongodb.MongoClient;
 
 public class MongoConnection {
 
-		   private static MongoConnection instance = null;
-		   private MongoConnection() {}
-		   
-		   public static MongoConnection getInstance() {
-		      if(instance == null) {
-		         instance = new MongoConnection();
-		      }
-		      return instance;
-		   }
-		   
-			public MongoClient getConnection() {
-				return new MongoClient();
-			}
+	private static MongoConnection instance = null;
+	private MongoClient client;
+
+	private MongoConnection() {
+		this.client = null;
+	}
+
+	public static MongoConnection getInstance() {
+		if(instance == null) {
+			instance = new MongoConnection();
+		}
+		return instance;
+	}
+
+	public MongoClient getConnection() {
+		if (this.client == null)
+			this.client = new MongoClient();
+		return this.client;
+	}
 }

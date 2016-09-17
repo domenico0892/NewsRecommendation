@@ -1,5 +1,6 @@
 package org.rm3umf.domain;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
 public class TweetEntity extends Enrichment{
@@ -9,7 +10,7 @@ public class TweetEntity extends Enrichment{
 	public String typeURI;
 	public String uri;
 	public Double relevance;
-	public Date creationTime;
+	public Timestamp creationTime;
 	public User user;
 	public Message tweet;
 
@@ -65,11 +66,11 @@ public class TweetEntity extends Enrichment{
 		this.relevance = relevance;
 	}
 
-	public Date getCreationTime() {
+	public Timestamp getCreationTime() {
 		return creationTime;
 	}
 
-	public void setCreationTime(Date creationTime) {
+	public void setCreationTime(Timestamp creationTime) {
 		this.creationTime = creationTime;
 	}
 

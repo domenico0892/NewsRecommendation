@@ -9,7 +9,9 @@ import org.rm3umf.domain.UserModel;
 import org.rm3umf.framework.buildmodel.extractor.EntitySignalComponent;
 import org.rm3umf.framework.buildmodel.extractor.ExtractorException;
 import org.rm3umf.framework.buildmodel.extractor.StrategyExtraction;
+import org.rm3umf.framework.importing.DatasetUmap;
 import org.rm3umf.persistenza.AAFacadePersistence;
+import org.rm3umf.persistenza.DataSource;
 import org.rm3umf.persistenza.PersistenceException;
 
 
@@ -47,12 +49,15 @@ public class BuildModel {
 	private List<User> listaUser;
 	private BuiltSignalComponent signalComponetCreator;
 	private List<StrategyExtraction> listaEnrichment;
+	
+	//private DatasetUmap dataset;
 
 
 	public BuildModel() throws PersistenceException{
 		//
-		this.listaUser=AAFacadePersistence.getInstance().userRetriveAll();
-	
+		//this.listaUser=AAFacadePersistence.getInstance().userRetriveAll();
+		this.listaUser=AAFacadePersistence.getInstance().userRetriveReal();
+		System.out.println("Size lista user: " + listaUser.size());
 		listaEnrichment = new LinkedList<StrategyExtraction>();
 //		listaEnrichment.add(new NewsEntitySignalComponent());
 //		listaEnrichment.add(new NewsTopicSignalComponent());
@@ -65,6 +70,7 @@ public class BuildModel {
 		listaEnrichment.add(new EntitySignalComponent());
 		
 		this.signalComponetCreator=new BuiltSignalComponent(listaEnrichment);
+		//this.dataset = new DatasetUmap();
 
 	}
 
@@ -78,7 +84,7 @@ public class BuildModel {
 
 		/*prepara il database*/
 		//COMMENTA X ESEGUIRE VELOCE
-//		AAFacadePersistence.getInstance().prepareDBBuilderSignal(listaEnrichment);
+		AAFacadePersistence.getInstance().prepareDBBuilderSignal(listaEnrichment);
 
 		/*
 		 *=============================================
@@ -95,7 +101,7 @@ public class BuildModel {
 		//Per news recommender
 		String startDate = "2010-11-10";
 		String endDate=AAFacadePersistence.getInstance().periodGetMaxDate();
-
+		//String endDate = dataset.getMaxDate();
 
 		//creo la lista dei periodi in base alla data massima e minima dei tweet
 		List<Period> listaPeriodi=factrotyPeriod.createPeriods(startDate,endDate,this.DAYPERIOD);
@@ -113,8 +119,8 @@ public class BuildModel {
 		/* Elimino i signal componente relativi ad un concept referenziato solo una volta
 		 * perchè probabilmente sono relativi ad errori o cmq non sono rilevanti 
 		 */
-//		FilterSignalComponent filterSigComp = new FilterSignalComponent();
-//		filterSigComp.filter(SOGLIACONCEPT,this.listaEnrichment);
+		//FilterSignalComponent filterSigComp = new FilterSignalComponent();
+		//filterSigComp.filter(SOGLIACONCEPT,this.listaEnrichment);
 
 		
 		/*
@@ -126,7 +132,7 @@ public class BuildModel {
 		//Crea le signal component relativi a tutti i periodi
 
 		//COMMENTA X ESEGUIRE VELOCE
-//		signalComponetCreator.createSignalComponent(listaPeriodiTraining, listaPeriodiTest, SOGLIACONCEPT);
+		signalComponetCreator.createSignalComponent(listaPeriodiTraining, listaPeriodiTest, SOGLIACONCEPT);
 
 		
 		/*
@@ -135,10 +141,10 @@ public class BuildModel {
 		 *===================================
 		 * */
 
-//		List<Period> listaPeriodi = AAFacadePersistence.getInstance().periodRetriveAll();
-//		AAFacadePersistence.getInstance().signalDelete();
-//		BuiltSignal signalCreator = new BuiltSignal(listaPeriodiTraining.size(), SOGLIASEGNALI, 1); //smoothing
-//		signalCreator.buildSignal(listaUser, listaEnrichment);
+		listaPeriodi = AAFacadePersistence.getInstance().periodRetriveAll();
+		//AAFacadePersistence.getInstance().signalDelete();
+		BuiltSignal signalCreator = new BuiltSignal(listaPeriodiTraining.size(), SOGLIASEGNALI, 1); //smoothing
+		signalCreator.buildSignal(listaUser, listaEnrichment);
 
 		/*
 		 *===================================

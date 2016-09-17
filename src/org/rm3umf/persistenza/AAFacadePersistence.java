@@ -105,6 +105,10 @@ public class AAFacadePersistence {
 	public void userSave(User user) throws PersistenceException{
 		userDAO.save(user);
 	}
+	
+	public List<User> userRetriveReal() throws PersistenceException {
+		return userDAO.userRetriveReal();
+	}
 
 	public List<User> userRetriveAll() throws PersistenceException{
 		return userDAO.doRetrieveAll();
@@ -433,6 +437,10 @@ public class AAFacadePersistence {
 	 * NEWSENTITY
 	 * @throws PersistenceException 
 	 */
+	
+	public void saveNewsEntity (NewsEntity n) throws PersistenceException { 
+		newsentityDAO.saveNewsEntity(n);
+	}
 
 
 	public List<NewsEntity> newsentityRetrieveByNewsId(String newsId, String type) throws PersistenceException {
@@ -467,6 +475,10 @@ public class AAFacadePersistence {
 	 * @throws PersistenceException 
 	 */
 	
+	public void saveNewsTopic (NewsTopic n) throws PersistenceException {
+		this.newstopicDAO.saveNewsTopic(n);
+	}
+	
 	public List<Message> newsTopicdoRetrieveByUserIdAndDate(User user, Period period) throws PersistenceException {
 		return this.newstopicDAO.doRetrieveByUserIdAndDate(user, period);
 	}
@@ -497,7 +509,9 @@ public class AAFacadePersistence {
 	 * @throws PersistenceException 
 	 */
 	
-	
+	public void saveTweetEntity (TweetEntity n) throws PersistenceException {
+		this.tweetsentityDAO.saveTweetEntity(n);
+	}
 	public List<Message> tweetsentityDAOdoRetrieveByUserIdAndDate(User user, Period period) throws PersistenceException {
 		return this.tweetsentityDAO.doRetrieveByUserIdAndDate(user, period);
 	}
@@ -529,7 +543,9 @@ public class AAFacadePersistence {
 	 * @throws PersistenceException 
 	 */
 
-
+	public void saveTweetTopic (TweetTopic n) throws PersistenceException {
+		this.tweetstopicDAO.saveTweetTopic(n);
+	}
 	public List<Message> tweettopicDAOdoRetrieveByUserIdAndDate(User user, Period period) throws PersistenceException {
 		return this.tweetstopicDAO.doRetrieveByUserIdAndDate(user, period);
 	}

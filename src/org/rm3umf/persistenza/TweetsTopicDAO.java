@@ -25,5 +25,7 @@ public interface TweetsTopicDAO {
 	public Map<String, Enrichment> retrieve4UserAndPeriod(User user, int periodid) throws PersistenceException;
 
 	public List<Message> doRetrieveByUserIdAndDate(User user,Period period) throws PersistenceException;
+	
+	public void saveTweetTopic (TweetTopic n) throws PersistenceException;
 
 }

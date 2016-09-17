@@ -34,6 +34,27 @@ import org.rm3umf.persistenza.PersistenceException;
 public class NewsEntityDAOpostgreSQL implements NewsEntityDAO{
 
 	private Logger logger = Logger.getLogger(NewsEntityDAOpostgreSQL.class);
+	
+	public void saveNewsEntity (NewsEntity n) throws PersistenceException {
+		String query = "INSERT INTO semanticsNewsEntity VALUES (?, ?, ?, ?, ?, ?, ?)";
+		DataSourcePostgreSQL ds = DataSourcePostgreSQL.getInstance();
+		try {
+			Connection connection = ds.getConnection();
+			PreparedStatement statement = connection.prepareStatement(query);
+			statement.setLong(1, Long.parseLong(n.getNews().getId()));
+			statement.setString(2, n.getType());
+			statement.setString(3, n.getTypeURI());
+			statement.setString(4, n.getName());
+			statement.setString(5, n.getUri());
+			statement.setDouble(6, n.getRelevance());
+			statement.setTimestamp(7, n.getPublish_date());
+			statement.execute();
+		}
+		catch (SQLException e) {
+			logger.error("errore nell'inserimento della news entity");
+		}
+		
+	}
 
 	@Override
 	public List<NewsEntity> getNewsEntityFromNewsId(String newsId, String type) throws PersistenceException {

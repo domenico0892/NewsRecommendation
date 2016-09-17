@@ -94,7 +94,8 @@ public class BuiltSignalComponent {
 	public void extractSignalComponent(List<Period> periods, StrategyExtraction enrichment, int SOGLIACONCEPT) throws ExtractorException, PersistenceException, NoSuchAlgorithmException{
 		logger.info("creo i signal component");
 		List<PseudoFragment> listaPseudo = null;
-		List<User> listaUser = AAFacadePersistence.getInstance().userRetriveAll();
+		//List<User> listaUser = AAFacadePersistence.getInstance().userRetriveAll();
+		List<User> listaUser = AAFacadePersistence.getInstance().userRetriveReal();
 		int c = 0;
 		for(User u : listaUser) {
 //		User u = new User();

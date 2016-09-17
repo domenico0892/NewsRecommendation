@@ -19,7 +19,10 @@ public class User {
 	
 	
 	
-	
+	public boolean equals (Object o) {
+		User u = (User) o;
+		return this.iduser == u.getIduser();
+	}
 	
 	public List<String> getUsernames() {
 		return usernames;

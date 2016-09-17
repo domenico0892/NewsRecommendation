@@ -76,18 +76,18 @@ public class UserDAOpostgreSQL  implements UserDAO{
 			catch (SQLException e) {
 				throw new PersistenceException(e.getMessage());
 			}
-			finally {
-				try {
-					if (result != null)
-						result.close();
-					if (statement != null) 
-						statement.close();
-					if (connection!= null)
-						connection.close();
-				} catch (SQLException e) {
-					throw new PersistenceException(e.getMessage());
-				}
-			}
+//			finally {
+//				try {
+//					if (result != null)
+//						result.close();
+//					if (statement != null) 
+//						statement.close();
+//					if (connection!= null)
+//						connection.close();
+//				} catch (SQLException e) {
+//					throw new PersistenceException(e.getMessage());
+//				}
+//			}
 			return listaUser;
 		}
 
@@ -118,18 +118,18 @@ public class UserDAOpostgreSQL  implements UserDAO{
 			throw new PersistenceException(e.getMessage());
 
 		}
-		finally {
-			try {
-				if (result != null)
-					result.close();
-				if (statement != null) 
-					statement.close();
-				if (connection!= null)
-					connection.close();
-			} catch (SQLException e) {
-				throw new PersistenceException(e.getMessage());
-			}
-		}
+//		finally {
+//			try {
+//				if (result != null)
+//					result.close();
+//				if (statement != null) 
+//					statement.close();
+//				if (connection!= null)
+//					connection.close();
+//			} catch (SQLException e) {
+//				throw new PersistenceException(e.getMessage());
+//			}
+//		}
 		return usernames;
 	}
 
@@ -171,16 +171,16 @@ public class UserDAOpostgreSQL  implements UserDAO{
 			logger.error("errore durante il salvataggio degli utenti");
 			throw new PersistenceException(e.getMessage());
 		}
-		finally {
-			try {
-				if (statement != null) 
-					statement.close();
-				if (connection!= null)
-					connection.close();
-			} catch (SQLException e) {
-				throw new PersistenceException(e.getMessage());
-			}
-		}
+//		finally {
+//			try {
+//				if (statement != null) 
+//					statement.close();
+//				if (connection!= null)
+//					connection.close();
+//			} catch (SQLException e) {
+//				throw new PersistenceException(e.getMessage());
+//			}
+//		}
 	}
 
 
@@ -206,16 +206,16 @@ public class UserDAOpostgreSQL  implements UserDAO{
 			logger.error("errore durante il salvataggio degli utenti");
 			throw new PersistenceException(e.getMessage());
 		}
-		finally {
-			try {
-				if (statement != null) 
-					statement.close();
-				if (connection!= null)
-					connection.close();
-			} catch (SQLException e) {
-				throw new PersistenceException(e.getMessage());
-			}
-		}
+//		finally {
+//			try {
+//				if (statement != null) 
+//					statement.close();
+//				if (connection!= null)
+//					connection.close();
+//			} catch (SQLException e) {
+//				throw new PersistenceException(e.getMessage());
+//			}
+//		}
 	}
 
 
@@ -232,16 +232,16 @@ public class UserDAOpostgreSQL  implements UserDAO{
 		catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
 		}
-		finally {
-			try {
-				if (statement != null) 
-					statement.close();
-				if (connection!= null)
-					connection.close();
-			} catch (SQLException e) {
-				throw new PersistenceException(e.getMessage());
-			}
-		}
+//		finally {
+//			try {
+//				if (statement != null) 
+//					statement.close();
+//				if (connection!= null)
+//					connection.close();
+//			} catch (SQLException e) {
+//				throw new PersistenceException(e.getMessage());
+//			}
+//		}
 	}
 
 	/**
@@ -265,16 +265,16 @@ public class UserDAOpostgreSQL  implements UserDAO{
 			e.printStackTrace();
 			throw new PersistenceException(e.getMessage());
 		}
-		finally {
-			try {
-				if (statement != null) 
-					statement.close();
-				if (connection!= null)
-					connection.close();
-			} catch (SQLException e) {
-				throw new PersistenceException(e.getMessage());
-			}
-		}
+//		finally {
+//			try {
+//				if (statement != null) 
+//					statement.close();
+//				if (connection!= null)
+//					connection.close();
+//			} catch (SQLException e) {
+//				throw new PersistenceException(e.getMessage());
+//			}
+//		}
 	}
 
 
@@ -297,18 +297,18 @@ public class UserDAOpostgreSQL  implements UserDAO{
 		catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());	
 		}
-		finally {
-			try {
-				if (result != null)
-					result.close();
-				if (statement != null) 
-					statement.close();
-				if (connection!= null)
-					connection.close();
-			} catch (SQLException e) {
-				throw new PersistenceException(e.getMessage());
-			}
-		}
+//		finally {
+//			try {
+//				if (result != null)
+//					result.close();
+//				if (statement != null) 
+//					statement.close();
+//				if (connection!= null)
+//					connection.close();
+//			} catch (SQLException e) {
+//				throw new PersistenceException(e.getMessage());
+//			}
+//		}
 		return userFollowed;
 	}
 
@@ -324,16 +324,16 @@ public class UserDAOpostgreSQL  implements UserDAO{
 		catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
 		}
-		finally {
-			try {
-				if (statement != null) 
-					statement.close();
-				if (connection!= null)
-					connection.close();
-			} catch (SQLException e) {
-				throw new PersistenceException(e.getMessage());
-			}
-		}
+//		finally {
+//			try {
+//				if (statement != null) 
+//					statement.close();
+//				if (connection!= null)
+//					connection.close();
+//			} catch (SQLException e) {
+//				throw new PersistenceException(e.getMessage());
+//			}
+//		}
 	}
 
 	/**
@@ -361,18 +361,18 @@ public class UserDAOpostgreSQL  implements UserDAO{
 		catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
 		}
-		finally {
-			try {
-				if (result != null)
-					result.close();
-				if (statement != null) 
-					statement.close();
-				if (connection!= null)
-					connection.close();
-			} catch (SQLException e) {
-				throw new PersistenceException(e.getMessage());
-			}
-		}
+//		finally {
+//			try {
+//				if (result != null)
+//					result.close();
+//				if (statement != null) 
+//					statement.close();
+//				if (connection!= null)
+//					connection.close();
+//			} catch (SQLException e) {
+//				throw new PersistenceException(e.getMessage());
+//			}
+//		}
 		return listaUser;
 	}
 
@@ -401,18 +401,18 @@ public class UserDAOpostgreSQL  implements UserDAO{
 		catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());	
 		}
-		finally {
-			try {
-				if (result != null)
-					result.close();
-				if (statement != null) 
-					statement.close();
-				if (connection!= null)
-					connection.close();
-			} catch (SQLException e) {
-				throw new PersistenceException(e.getMessage());
-			}
-		}
+//		finally {
+//			try {
+//				if (result != null)
+//					result.close();
+//				if (statement != null) 
+//					statement.close();
+//				if (connection!= null)
+//					connection.close();
+//			} catch (SQLException e) {
+//				throw new PersistenceException(e.getMessage());
+//			}
+//		}
 		return userFollowed;
 	}
 
@@ -432,16 +432,16 @@ public class UserDAOpostgreSQL  implements UserDAO{
 			e.printStackTrace();
 			throw new PersistenceException(e.getMessage());
 		}
-		finally {
-			try {
-				if (statement != null) 
-					statement.close();
-				if (connection!= null)
-					connection.close();
-			} catch (SQLException e) {
-				throw new PersistenceException(e.getMessage());
-			}
-		}
+//		finally {
+//			try {
+//				if (statement != null) 
+//					statement.close();
+//				if (connection!= null)
+//					connection.close();
+//			} catch (SQLException e) {
+//				throw new PersistenceException(e.getMessage());
+//			}
+//		}
 	}
 
 	public void deleteFollower() throws PersistenceException {
@@ -456,16 +456,16 @@ public class UserDAOpostgreSQL  implements UserDAO{
 		catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
 		}
-		finally {
-			try {
-				if (statement != null) 
-					statement.close();
-				if (connection!= null)
-					connection.close();
-			} catch (SQLException e) {
-				throw new PersistenceException(e.getMessage());
-			}
-		}
+//		finally {
+//			try {
+//				if (statement != null) 
+//					statement.close();
+//				if (connection!= null)
+//					connection.close();
+//			} catch (SQLException e) {
+//				throw new PersistenceException(e.getMessage());
+//			}
+//		}
 	}
 
 	@Override
@@ -493,18 +493,18 @@ public class UserDAOpostgreSQL  implements UserDAO{
 			throw new PersistenceException(e.getMessage());
 
 		}
-		finally {
-			try {
-				if (result != null)
-					result.close();
-				if (statement != null) 
-					statement.close();
-				if (connection!= null)
-					connection.close();
-			} catch (SQLException e) {
-				throw new PersistenceException(e.getMessage());
-			}
-		}
+//		finally {
+//			try {
+//				if (result != null)
+//					result.close();
+//				if (statement != null) 
+//					statement.close();
+//				if (connection!= null)
+//					connection.close();
+//			} catch (SQLException e) {
+//				throw new PersistenceException(e.getMessage());
+//			}
+//		}
 		return user_model;
 	}
 	@Override
@@ -532,7 +532,52 @@ public class UserDAOpostgreSQL  implements UserDAO{
 			throw new PersistenceException(e.getMessage());
 
 		}
-		finally {
+//		finally {
+//			try {
+//				if (result != null)
+//					result.close();
+//				if (statement != null) 
+//					statement.close();
+//				if (connection!= null)
+//					connection.close();
+//			} catch (SQLException e) {
+//				throw new PersistenceException(e.getMessage());
+//			}
+//		}
+		return user_model;
+	}
+
+	@Override
+	public List<User> userRetriveReal() throws PersistenceException {
+		User user = null;
+		List<User> listaUser = new ArrayList<User>();
+		DataSourcePostgreSQL ds = DataSourcePostgreSQL.getInstance();
+		Connection connection = null;
+		PreparedStatement statement = null;
+		ResultSet result = null;
+		try {
+			connection = ds.getConnection();
+			String retrieve = "SELECT * FROM users";
+			//Per fare i test sui 100 utenti che hanno scritto di più
+//			String retrieve = "SELECT  userId, COUNT(*) as s "
+//					+ "FROM new_news_recommendation.tweets_sample	"
+//					+ "GROUP BY (userId) "
+//					+ "ORDER BY s DESC "
+//					+ "LIMIT 10 ";
+//			String retrieve = "select distinct userId from new_news_recommendation.tweets_sample where userId=21478415 ";
+
+			statement = connection.prepareStatement(retrieve);
+			result = statement.executeQuery();
+			while (result.next()) {
+				user = new UserProxy();
+				user.setIduser(result.getLong(1));
+				listaUser.add(user);
+			}
+		}
+		catch (SQLException e) {
+			throw new PersistenceException(e.getMessage());
+		}
+		/*finally {
 			try {
 				if (result != null)
 					result.close();
@@ -543,8 +588,7 @@ public class UserDAOpostgreSQL  implements UserDAO{
 			} catch (SQLException e) {
 				throw new PersistenceException(e.getMessage());
 			}
-		}
-		return user_model;
+		}*/
+		return listaUser;
 	}
-
-}
+	}

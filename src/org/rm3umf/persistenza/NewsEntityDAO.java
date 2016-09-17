@@ -32,4 +32,6 @@ public interface NewsEntityDAO {
 	
 	public List<Message> doRetrieveByUserIdAndDate(User user,Period period) throws PersistenceException;
 	
+	public void saveNewsEntity (NewsEntity n) throws PersistenceException;
+	
 }

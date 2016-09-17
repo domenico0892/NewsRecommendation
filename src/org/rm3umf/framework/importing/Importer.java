@@ -63,11 +63,8 @@ public class Importer {
 
 	private static final Logger logger = Logger.getLogger(Importer.class);
 
-
-
 	private DatasetAdapter dataset;
 	private UrlExtractor urlextractor;
-
 
 	public Importer(){
 		this.urlextractor = new UrlExtractor();
@@ -85,7 +82,12 @@ public class Importer {
 		SocialEnricherFromDB modelEnricher = new SocialEnricherFromDB();
 
 		// MI PRENDO DA dataset_umap la lista di USER
-		List<User> utentiDataset= (List<User>) dataset.getObject();
+		List<User> utentiDataset = (List<User>) dataset.getObject();
+		List<User> utentiPresi = AAFacadePersistence.getInstance().userRetriveReal();
+		
+		for (User utente : utentiPresi) {
+			utentiDataset.remove(utente);
+		}
 
 		int sizeUsers=utentiDataset.size();
 		int iterazione=0;

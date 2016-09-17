@@ -28,5 +28,7 @@ public interface NewsTopicDAO {
 			int periodid) throws PersistenceException; 
 	
 	public List<Message> doRetrieveByUserIdAndDate(User user,Period period) throws PersistenceException;
+	
+	public void saveNewsTopic (NewsTopic n) throws PersistenceException;
 
 }
