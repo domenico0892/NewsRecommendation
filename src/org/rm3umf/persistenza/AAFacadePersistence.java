@@ -98,6 +98,10 @@ public class AAFacadePersistence {
 		//		messageDelete();
 		//		userDelete();
 	}
+	
+	public void saveNews (News news) throws PersistenceException {
+		this.newsDAO.saveNews(news);
+	}
 
 	/**
 	 * USER

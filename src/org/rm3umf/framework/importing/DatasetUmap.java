@@ -103,9 +103,9 @@ public class DatasetUmap implements DatasetAdapter{
 				n.setTitle(result.getString(5));
 				n.setDescription(result.getString(6));
 				n.setNewscontent(result.getString(7));
-				n.setPublish_date(String.valueOf(result.getDate(8)));
-				n.setUpdate_date(String.valueOf(result.getDate(9)));
-				n.setCrawl_date(String.valueOf(result.getDate(10)));
+				n.setPublish_date(result.getDate(8));
+				n.setUpdate_date(result.getDate(9));
+				n.setCrawl_date(result.getDate(10));
 				//dovre mettere il type quando necessario
 			}
 		}catch (SQLException e) {

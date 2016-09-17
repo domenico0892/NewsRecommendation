@@ -25,6 +25,29 @@ import org.rm3umf.persistenza.NewsDAO;
 public class NewsDAOpostgreSQL implements NewsDAO{
 
 	private Logger logger = Logger.getLogger(NewsDAOpostgreSQL.class);
+	
+	public void saveNews (News news) throws PersistenceException {
+		DataSourcePostgreSQL ds = DataSourcePostgreSQL.getInstance();
+		Connection connection = null;
+		try {
+			connection = ds.getConnection();
+			String query = "INSERT INTO news VALUES (?,?,?,?,?,?,?,?,?)";
+			PreparedStatement ps = connection.prepareStatement(query);
+			ps.setString(1, news.getSource());
+			ps.setString(2, news.getCategory());
+			ps.setString(3, news.getUrl());
+			ps.setString(4, news.getTitle());
+			ps.setString(5, news.getDescription());
+			ps.setString(6, news.getNewscontent());
+			ps.setDate(7, news.getPublish_date());
+			ps.setDate(8, news.getUpdate_date());
+			ps.setDate(9, news.getUpdate_date());
+			ps.execute();
+		}
+		catch (SQLException e) {
+			throw new PersistenceException(e.getMessage());
+		}
+	}
 
 	public News doRetrieveNewsById(String id) throws PersistenceException {
 		News n=null;
@@ -48,12 +71,9 @@ public class NewsDAOpostgreSQL implements NewsDAO{
 				n.setTitle(result.getString(5));
 				n.setDescription(result.getString(6));
 				n.setNewscontent(result.getString(7));
-				String text = df.format(result.getDate(8));
-				n.setPublish_date(text);
-				String text1 = df.format(result.getDate(9));
-				n.setUpdate_date(text1);
-				String text2 = df.format(result.getDate(10));
-				n.setCrawl_date(text2);
+				n.setPublish_date(result.getDate(8));
+				n.setUpdate_date(result.getDate(9));
+				n.setCrawl_date(result.getDate(10));
 			}
 		}catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
@@ -102,12 +122,9 @@ public class NewsDAOpostgreSQL implements NewsDAO{
 				n.setTitle(result.getString(5));
 				n.setDescription(result.getString(6));
 				n.setNewscontent(result.getString(7));
-				String text = df.format(result.getDate(8));
-				n.setPublish_date(text);
-				String text1 = df.format(result.getDate(9));
-				n.setUpdate_date(text1);
-				String text2 = df.format(result.getDate(10));
-				n.setCrawl_date(text2);
+				n.setPublish_date(result.getDate(8));
+				n.setUpdate_date(result.getDate(9));
+				n.setCrawl_date(result.getDate(10));
 				listNews.add(n);	
 			}
 		}catch (SQLException e) {
@@ -153,11 +170,10 @@ public class NewsDAOpostgreSQL implements NewsDAO{
 				n.setDescription(result.getString(6));
 				n.setNewscontent(result.getString(7));
 				String text = df.format(result.getDate(8));
-				n.setPublish_date(text);
-				String text1 = df.format(result.getDate(9));
-				n.setUpdate_date(text1);
-				String text2 = df.format(result.getDate(10));
-				n.setCrawl_date(text2);
+				n.setPublish_date(result.getDate(8));
+				n.setUpdate_date(result.getDate(9));
+				n.setCrawl_date(result.getDate(10));
+			
 				newsForPeriod.add(n);
 			}
 		}catch (SQLException e) {
@@ -254,9 +270,9 @@ public class NewsDAOpostgreSQL implements NewsDAO{
 				n.setTitle(result.getString(5));
 				n.setDescription(result.getString(6));
 				n.setNewscontent(result.getString(7));
-				n.setPublish_date(String.valueOf(result.getDate(8)));
-				n.setUpdate_date(String.valueOf(result.getDate(9)));
-				n.setCrawl_date(String.valueOf(result.getDate(10)));
+				n.setPublish_date(result.getDate(8));
+				n.setUpdate_date(result.getDate(9));
+				n.setCrawl_date(result.getDate(10));
 				//dovre mettere il type quando necessario
 			}
 		}catch (SQLException e) {

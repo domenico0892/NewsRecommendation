@@ -1,5 +1,7 @@
 package org.rm3umf.domain;
 
+import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.List;
 
 
@@ -19,9 +21,9 @@ public class News {
 	private String title;
 	private String description;
 	private String newscontent;
-	private String publish_date;
-	private String update_date;
-	private String crawl_date;
+	private Date publish_date;
+	private Date update_date;
+	private Date crawl_date;
 	private int numberinstance;
 	private List<TweetEntity> newsEntity;
 	private List<TweetTopic> newsTopic;
@@ -74,27 +76,27 @@ public class News {
 		this.newscontent = newscontent;
 	}
 
-	public String getPublish_date() {
+	public Date getPublish_date() {
 		return publish_date;
 	}
 
-	public void setPublish_date(String publish_date) {
+	public void setPublish_date(Date publish_date) {
 		this.publish_date = publish_date;
 	}
 
-	public String getUpdate_date() {
+	public Date getUpdate_date() {
 		return update_date;
 	}
 
-	public void setUpdate_date(String update_date) {
+	public void setUpdate_date(Date update_date) {
 		this.update_date = update_date;
 	}
 
-	public String getCrawl_date() {
+	public Date getCrawl_date() {
 		return crawl_date;
 	}
 
-	public void setCrawl_date(String crawl_date) {
+	public void setCrawl_date(Date crawl_date) {
 		this.crawl_date = crawl_date;
 	}
 

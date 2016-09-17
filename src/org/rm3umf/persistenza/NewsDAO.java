@@ -9,6 +9,8 @@ import org.rm3umf.domain.User;
 
 public interface NewsDAO {
 	
+	public void saveNews (News news) throws PersistenceException;
+	
 	public News doRetrieveNewsById(String id) throws PersistenceException;
 
 	public List<News> doRetrieveNewsInrilenvate(int soglia) throws PersistenceException ;
