@@ -25,7 +25,53 @@ import org.rm3umf.persistenza.NewsDAO;
 public class NewsDAOpostgreSQL implements NewsDAO{
 
 	private Logger logger = Logger.getLogger(NewsDAOpostgreSQL.class);
-	
+
+	public void updateEntityAnalyzed (long id, int i) throws PersistenceException {
+		DataSourcePostgreSQL ds = DataSourcePostgreSQL.getInstance();
+		try {
+		Connection connection = null;
+		connection = ds.getConnection();
+		String query = "UPDATE news SET entity_extracted = 1 WHERE id = ?";
+		PreparedStatement ps = connection.prepareStatement(query);
+		ps.setLong(1, id);
+		ps.execute();
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public News retriveNotAnalyzed () throws PersistenceException {
+		News n=null;
+		DataSourcePostgreSQL ds = DataSourcePostgreSQL.getInstance();
+		Connection connection = null;
+		PreparedStatement statement = null;
+		ResultSet result = null;
+		try {
+			connection = ds.getConnection();
+			String retrieve = "SELECT * FROM news WHERE entity_extracted IS NOT 1 LIMIT 1";
+			statement = connection.prepareStatement(retrieve);
+			result = statement.executeQuery();
+			if(result.next()){
+				//	DateFormat df = new SimpleDateFormat("yyyy/MM/dd");
+				n = new News();
+				n.setId(result.getString(1));
+				n.setSource(result.getString(2));
+				n.setCategory(result.getString(3));
+				n.setUrl(result.getString(4));
+				n.setTitle(result.getString(5));
+				n.setDescription(result.getString(6));
+				n.setNewscontent(result.getString(7));
+				n.setPublish_date(result.getDate(8));
+				n.setUpdate_date(result.getDate(9));
+				n.setCrawl_date(result.getDate(10));
+			}
+		}catch (SQLException e) {
+			throw new PersistenceException(e.getMessage());
+		}
+		return n;
+	}
+
 	public void saveNews (News news) throws PersistenceException {
 		DataSourcePostgreSQL ds = DataSourcePostgreSQL.getInstance();
 		Connection connection = null;
@@ -78,7 +124,7 @@ public class NewsDAOpostgreSQL implements NewsDAO{
 		}catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
 		}
-	/*	finally {
+		/*	finally {
 			try {
 				if (result != null)
 					result.close();
@@ -173,7 +219,7 @@ public class NewsDAOpostgreSQL implements NewsDAO{
 				n.setPublish_date(result.getDate(8));
 				n.setUpdate_date(result.getDate(9));
 				n.setCrawl_date(result.getDate(10));
-			
+
 				newsForPeriod.add(n);
 			}
 		}catch (SQLException e) {
@@ -233,7 +279,7 @@ public class NewsDAOpostgreSQL implements NewsDAO{
 		catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
 		}
-	/*	finally {
+		/*	finally {
 			try {
 				if (statement != null) 
 					statement.close();

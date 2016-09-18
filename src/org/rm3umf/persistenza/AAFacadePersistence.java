@@ -225,6 +225,10 @@ public class AAFacadePersistence {
 	public void newsDeleteAll() throws PersistenceException{
 		newsDAO.deleteAll();
 	}
+	
+	public News retriveNotAnalyzed () throws PersistenceException {
+		return newsDAO.retriveNotAnalyzed();
+	}
 
 	/**
 	 * Recupera le news a partire dall'url
@@ -436,7 +440,9 @@ public class AAFacadePersistence {
 			signalDAO.delete(s);
 	}
 
-
+	public void updateEntityAnalyzed (long id, int i) throws PersistenceException {
+		newsDAO.updateEntityAnalyzed(id, i);
+	}
 	/**
 	 * NEWSENTITY
 	 * @throws PersistenceException 

@@ -30,4 +30,8 @@ public interface NewsDAO {
 	public List<News> doRetrieveNewsCompleteByUser(Long user,  List<Period> listaPeriodiTest) throws PersistenceException;
 
 	public List<News> doRetrieveNewsTrainingByUser(long iduser, List<Period> listaPeriodiTest) throws PersistenceException;
+	
+	public News retriveNotAnalyzed () throws PersistenceException;
+	
+	public void updateEntityAnalyzed (long id, int i) throws PersistenceException;
 }
