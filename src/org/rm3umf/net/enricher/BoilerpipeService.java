@@ -12,6 +12,16 @@ public class BoilerpipeService {
     public BoilerpipeService () {
         this.articleExtractor = new ArticleExtractor();
     }
+    
+    public String getTextFromUrl (String url) {
+    	try {
+			return this.articleExtractor.getText(url);
+		} catch (BoilerpipeProcessingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	return null;
+    }
 
     public String getCleanedText(String text) {
         try {

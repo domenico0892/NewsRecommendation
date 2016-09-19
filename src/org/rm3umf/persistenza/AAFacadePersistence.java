@@ -98,6 +98,10 @@ public class AAFacadePersistence {
 		//		messageDelete();
 		//		userDelete();
 	}
+	
+	public void saveNews (News news) throws PersistenceException {
+		this.newsDAO.saveNews(news);
+	}
 
 	/**
 	 * USER
@@ -220,6 +224,10 @@ public class AAFacadePersistence {
 	 */
 	public void newsDeleteAll() throws PersistenceException{
 		newsDAO.deleteAll();
+	}
+	
+	public News retriveNotAnalyzed () throws PersistenceException {
+		return newsDAO.retriveNotAnalyzed();
 	}
 
 	/**
@@ -432,7 +440,9 @@ public class AAFacadePersistence {
 			signalDAO.delete(s);
 	}
 
-
+	public void updateEntityAnalyzed (long id, int i) throws PersistenceException {
+		newsDAO.updateEntityAnalyzed(id, i);
+	}
 	/**
 	 * NEWSENTITY
 	 * @throws PersistenceException 
