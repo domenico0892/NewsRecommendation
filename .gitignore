@@ -3,3 +3,5 @@
 .classpath
 bin/
 lib/stanford-corenlp-full-2015-12-09/
+index/
+*.txt

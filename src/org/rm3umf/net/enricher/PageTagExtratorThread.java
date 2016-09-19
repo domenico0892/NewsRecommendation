@@ -3,9 +3,11 @@ package org.rm3umf.net.enricher;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import org.bson.Document;
+import org.rm3umf.domain.NewsEntity;
 import org.rm3umf.persistenza.mongodb.MongoConnection;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 /**
  * Created by Domenico on 23/08/16.
@@ -52,9 +54,13 @@ public class PageTagExtratorThread implements Runnable {
                     if (!page.iterator().hasNext()) {
                         paginaHtml = htmlUnitDownloader.getPaginaFromUrl(url);
                         paginaHtml.setTesto(boilerpipeService.getCleanedText(paginaHtml.getHtml()));
-                        paginaHtml.setTagMe(tagMeClient.callReturnDocument("true", "true", paginaHtml.getTesto()));
-                        paginaHtml.setOpenCalais(openCalaisClient.callReturnDocument(paginaHtml.getTesto()));
-                        collPagine.insertOne(paginaHtml.getBsonDocument());
+//                        paginaHtml.setTagMe(tagMeClient.callReturnDocument("true", "true", paginaHtml.getTesto()));
+//                        paginaHtml.setOpenCalais(openCalaisClient.callReturnDocument(paginaHtml.getTesto()));
+                        Map<String, String> entities = StanfordTagger.getEntities(paginaHtml.getTesto());
+                        NewsEntity n = new NewsEntity();
+                        
+                        
+                        //collPagine.insertOne(paginaHtml.getBsonDocument());
                     }
 
                     //estraggo i tag dal testo del tweet e lo aggiorno
