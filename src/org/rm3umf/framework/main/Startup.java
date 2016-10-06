@@ -78,15 +78,15 @@ public class Startup {
 
 
 		List<StrategyExtraction> lista_criteri = new LinkedList<StrategyExtraction>();
-//				lista_criteri.add(new NewsEntitySignalComponent());
-//				lista_criteri.add(new NewsTopicSignalComponent());
-//				lista_criteri.add(new NewsTypeEntitySignalComponent());
-//		lista_criteri.add(new TweetTopicSignalComponent());
-//		lista_criteri.add(new TweetTypeEntitySignalComponent());
-//		lista_criteri.add(new TopicSignalComponent());
-//		lista_criteri.add(new TypeSignalComponent());
+		//				lista_criteri.add(new NewsEntitySignalComponent());
+		//				lista_criteri.add(new NewsTopicSignalComponent());
+		//				lista_criteri.add(new NewsTypeEntitySignalComponent());
+		//		lista_criteri.add(new TweetTopicSignalComponent());
+		//		lista_criteri.add(new TweetTypeEntitySignalComponent());
+		//		lista_criteri.add(new TopicSignalComponent());
+		//		lista_criteri.add(new TypeSignalComponent());
 		lista_criteri.add(new EntitySignalComponent());
-		
+
 
 
 		List<SimilarityFunction> listaFunzioniSimilarita=new LinkedList<SimilarityFunction>();
@@ -143,7 +143,7 @@ public class Startup {
 
 		listaFunzioniSimilarita.add(new CosineSimilarity());
 		listaFunzioniSimilarita.add(new CosineSimilarityWithNull());
-		
+
 
 
 
@@ -158,7 +158,7 @@ public class Startup {
 		//		listValFun.add(new   MeanReciprocalRank());
 		listValFun.add(new  SuccessAtRank_FF());
 		listValFun.add(new   MeanReciprocalRank_FF());
-//		listValFun.add(new   NDCG());
+		//		listValFun.add(new   NDCG());
 		//listValFun.add(new  MeanKendallTau(new LuceneFriendFollower()));
 
 
@@ -184,12 +184,12 @@ public class Startup {
 
 			//Da commentare se si sperimenta con follower
 			//List<UserModel> listTruthSignal = AAFacadePersistence.getInstance().truthsignaldoRetrieveByCriterio(criterio);
-	//sperimentazione nostro sistema
+			//sperimentazione nostro sistema
 			List<UserModel> userModels= AAFacadePersistence.getInstance().userModelRetriveAllWithCriterio(criterio);
-//			 sperimentazione per s1
-//			List<UserModel> userModels= AAFacadePersistence.getInstance().twittomender_tests1();
-//			sperimentazione per s7
-//			List<UserModel> userModels= AAFacadePersistence.getInstance().twittomender_tests7();
+			//			 sperimentazione per s1
+			//			List<UserModel> userModels= AAFacadePersistence.getInstance().twittomender_tests1();
+			//			sperimentazione per s7
+			//			List<UserModel> userModels= AAFacadePersistence.getInstance().twittomender_tests7();
 
 			/*
 			 * twittomender
@@ -221,20 +221,20 @@ public class Startup {
 			 * Per avere la raccomandazione sulle news, ossia 70% di segnali bag-of-signals e 
 			 *30% inidicizzato con lucene
 			 */
-//			test = twittomenderResultCreator.newsRecommender_Test(userModels,100);
+			//			test = twittomenderResultCreator.newsRecommender_Test(userModels,100);
 
 			/*
 			 * Per avere la raccomandazione sulle news, ossia 70% con s1 e 
 			 *30% inidicizzato con lucene
 			 */
-//				Result	training = twittomenderResultCreator.applyS1TrainingFunction(userModels,100);
+			//				Result	training = twittomenderResultCreator.applyS1TrainingFunction(userModels,100);
 
 			/*
 			 * Per avere la raccomandazione sulle news, s7 è sempre lo stesso
 			 * perchè indicizza follower e followed, cambio funzione per
 			 * regolarmi la lunghezza del ranking del test
 			 */
-//			Result	training = twittomenderResultCreator.applyS7FunctionTraining(userModels,100);
+			//			Result	training = twittomenderResultCreator.applyS7FunctionTraining(userModels,100);
 
 			//valuta tutte le funzioni di similarita 
 			//Da commentare se si sperimenta con follower

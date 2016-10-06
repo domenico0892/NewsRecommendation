@@ -1,4 +1,7 @@
 package org.rm3umf.net.enricher;
+import java.net.MalformedURLException;
+import java.net.URL;
+
 import de.l3s.boilerpipe.BoilerpipeProcessingException;
 import de.l3s.boilerpipe.extractors.ArticleExtractor;
 
@@ -13,9 +16,9 @@ public class BoilerpipeService {
         this.articleExtractor = new ArticleExtractor();
     }
     
-    public String getTextFromUrl (String url) {
+    public String getTextFromUrl (String url) throws MalformedURLException {
     	try {
-			return this.articleExtractor.getText(url);
+			return this.articleExtractor.getText(new URL(url));
 		} catch (BoilerpipeProcessingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -31,4 +34,5 @@ public class BoilerpipeService {
         }
         return null;
     }
-}
+    
+   }

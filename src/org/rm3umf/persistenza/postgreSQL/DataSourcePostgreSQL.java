@@ -49,7 +49,7 @@ public class DataSourcePostgreSQL implements DataSource{
 	
 	private Connection connect() throws PersistenceException {
 		String driver = "com.mysql.jdbc.Driver";
-		String dbURI = "jdbc:mysql://localhost:3306/new_news_recommendation";
+		String dbURI = "jdbc:mysql://localhost:3306/news_recommendation";
 		String userName = "root";
 		String password = "ai-lab";
 

@@ -1,5 +1,6 @@
 package org.rm3umf.net.enricher;
 
+import com.gargoylesoftware.htmlunit.BrowserVersion;
 import com.gargoylesoftware.htmlunit.NicelyResynchronizingAjaxController;
 import com.gargoylesoftware.htmlunit.WebClient;
 import com.gargoylesoftware.htmlunit.html.HtmlPage;
@@ -19,8 +20,8 @@ public class HtmlUnitDownloader {
         this.webClient.setAjaxController(new NicelyResynchronizingAjaxController());
         this.webClient.getOptions().setThrowExceptionOnFailingStatusCode(false);
         this.webClient.getOptions().setThrowExceptionOnScriptError(false);
-        this.webClient.waitForBackgroundJavaScript(30000);
-        this.webClient.waitForBackgroundJavaScriptStartingBefore(30000);
+        //this.webClient.waitForBackgroundJavaScript(30000);
+        //this.webClient.waitForBackgroundJavaScriptStartingBefore(30000);
         this.webClient.getOptions().setCssEnabled(false);
         //this.webClient.getOptions().setJavaScriptEnabled(true);
         this.webClient.getOptions().setRedirectEnabled(true);

@@ -49,7 +49,7 @@ public class NewsDAOpostgreSQL implements NewsDAO{
 		ResultSet result = null;
 		try {
 			connection = ds.getConnection();
-			String retrieve = "SELECT * FROM news WHERE entity_extracted IS NOT 1 LIMIT 1";
+			String retrieve = "SELECT * FROM news WHERE entity_extracted != 1 LIMIT 1";
 			statement = connection.prepareStatement(retrieve);
 			result = statement.executeQuery();
 			if(result.next()){
@@ -77,7 +77,7 @@ public class NewsDAOpostgreSQL implements NewsDAO{
 		Connection connection = null;
 		try {
 			connection = ds.getConnection();
-			String query = "INSERT INTO news VALUES (?,?,?,?,?,?,?,?,?)";
+			String query = "INSERT INTO news (source,category,url,title,description,newscontent,publish_date,update_date,crawl_date) VALUES (?,?,?,?,?,?,?,?,?)";
 			PreparedStatement ps = connection.prepareStatement(query);
 			ps.setString(1, news.getSource());
 			ps.setString(2, news.getCategory());

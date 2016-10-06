@@ -37,6 +37,18 @@ public class TweetEntity extends Enrichment{
 	public String getType() {
 		return type;
 	}
+	
+	public String getType (int level) {
+		if (this.type.length() < 2) {
+			return "";
+		}
+		String[] types = this.type.split(";");
+		for (int i=0; i<types.length;i++) {
+			if (i==level)
+				return types[i];
+		}
+		return types[level-1];
+	}
 
 	public void setType(String type) {
 		this.type = type;
